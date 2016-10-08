@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://cxf.apache.org/jaxrs
+	 http://cxf.apache.org/schemas/jaxrs.xsd
+	 http://www.springframework.org/schema/context
+	 http://www.springframework.org/schema/context/spring-context.xsd
+	 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd ">
+		
+
+	<context:component-scan base-package="com.blackbox.ids.abbyy" />
+	<util:properties id="environmentProperties" location="classpath:environment.properties" />
+	
+	<bean id="abbyyResource" class="com.blackbox.ids.abbyy.server.DefaultAbbyyResource"/>
+
+	<jaxrs:server id="abbyyRestService" address="/">
+		<jaxrs:serviceBeans>
+			<ref bean="abbyyResource" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<bean class="org.apache.cxf.jaxrs.model.wadl.WadlGenerator" />
+		</jaxrs:providers>
+	</jaxrs:server>
+
+	<util:map id="classificationToProjectMapping" map-class="java.util.HashMap"
+		key-type="java.lang.String"
+		value-type="com.blackbox.ids.abbyy.service.IDataExtractionService">
+		<entry key="PTOL-892" value-ref="dataExtraction892TemplateService"/>
+	</util:map>
+	
+		<util:map id="templateToDocumentDefinitionMapping" map-class="java.util.HashMap"
+		key-type="java.lang.String"
+		value-type="java.lang.String">
+		<entry key="PTOL-892" value="ClassifierPOCFinal1\\Templates\\PTOL-892.fcdot"/>
+	</util:map>
+
+</beans>

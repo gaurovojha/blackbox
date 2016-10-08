@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pair:PatentApplicationList xsi:schemaLocation="urn:us:gov:uspto:pair PatentApplicationList.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pair="urn:us:gov:uspto:pair">
+	<pair:FileHeader>
+			<pair:FileCreationTimeStamp>2016-01-05T03:02:46.46</pair:FileCreationTimeStamp>
+	</pair:FileHeader>
+	<pair:ApplicationStatusData>
+		<pair:ApplicationNumber>11223344</pair:ApplicationNumber>
+		<pair:ApplicationStatusCode>19</pair:ApplicationStatusCode>
+		<pair:ApplicationStatusText>Application Undergoing Preexam Processing</pair:ApplicationStatusText>
+		<pair:ApplicationStatusDate>2015-11-05</pair:ApplicationStatusDate>
+		<pair:AttorneyDocketNumber>BB 221015</pair:AttorneyDocketNumber>
+		<pair:FilingDate>2015-11-05</pair:FilingDate>
+		<pair:LastModifiedTimestamp>2015-12-30T20:54:20.20</pair:LastModifiedTimestamp>
+		<pair:CustomerNumber>136388</pair:CustomerNumber><pair:LastFileHistoryTransaction>
+			<pair:LastTransactionDate>2015-12-30</pair:LastTransactionDate>
+			<pair:LastTransactionDescription>Information Disclosure Statement (IDS) Filed</pair:LastTransactionDescription> </pair:LastFileHistoryTransaction> 
+		<pair:ImageAvailabilityIndicator>true</pair:ImageAvailabilityIndicator> 
+		<pair:GroupArtUnit>2684</pair:GroupArtUnit>
+		<pair:PatentClass>340</pair:PatentClass>
+		<pair:PatentSubclass>539130</pair:PatentSubclass>
+	</pair:ApplicationStatusData>
+</pair:PatentApplicationList>

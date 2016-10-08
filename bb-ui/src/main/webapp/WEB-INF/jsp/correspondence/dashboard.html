@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard - Blackbox</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+			<a href="javascript:void(0)" class="logo"><img src="images/logo_site.gif" alt="Torry | Morris"></a>
+			<div class="header-right">
+				
+				<a href="reports.html" class="msgs-link">Messages <sup>8</sup></a>
+				<div class="dropdown user-login">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="userdropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    John Mayer
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" aria-labelledby="userdropdown">
+				    <li><a href="#">Log Out</a></li>
+				  </ul>
+				</div>
+				 <img src="images/logo_ids.gif" alt="IDS">
+			</div>
+		</div>
+	</header>
+	<nav class="main-nav">
+		<div class="container">
+			<ul>
+				<li class="active"><a href="dashboard.html">My Dashboard</a></li>
+				<li><a href="action-item.html">Action Items<sup>5</sup></a></li>
+				<li><a href="sent-requests.html">Track Application</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="main-content container">
+		<ul class="content-links clearfix">
+			<li><a href=""  data-toggle="modal" data-target="#myModal2">
+			<i><img src="images/svg/new-documents.svg" class="icon20x"></i> New Documents</a></li>
+			<li><a href="" class="show-shortcut"  data-toggle="modal" data-target="#myModal"><i><img src="images/svg/bulk-uploads.svg" class="icon20x"></i> US Bulk Upload</a> <img src="images/shortcut-pic.gif" class="shortcut-pic"></li>
+			<li><a href="" data-toggle="modal" data-target="#myModal3"><i><img src="images/svg/pair-audit.svg" class="icon20x"></i> PAIR Audit</a></li>
+		</ul>
+
+		<div class="tab-container">
+			<ul class="tab-actions pull-right">
+				<li>
+          			<div class="daterange-picker tab">
+          				<input type="text" class="form-control date"  name="datefilter">
+          				
+						<span class="calendar"><i class="glyphicon glyphicon-calendar"></i></span>
+          			</div>
+				</li>
+				<!--search control header-->
+				<li class="search-control">
+					<button type="submit" value="submit" class="search-btn">
+						<i class="icon-search" data-alt="search"><img src="images/svg/search.svg" class="icon20x"></i>
+					</button>
+					<div class="search-dropdown">
+						<h5>Search By</h5>
+						<ul class="nav nav-tabs custom-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#applicationNoTab" role="tab" data-toggle="tab">Application#</a></li>
+							<li role="presentation"><a href="#attorneyDocTab" role="tab" data-toggle="tab">Attorney Docket No.</a></li>
+							<li role="presentation"><a href="#mailingDateTab" role="tab" data-toggle="tab">Family Id</a></li>
+							<li role="presentation"><a href="#moreTab" role="tab" data-toggle="tab">More</a></li>
+						</ul>
+
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="applicationNoTab">
+								<form class="form-horizontal">
+									<div class="form-group">
+										<div class="col-sm-12">
+											<div class="col-sm-6">
+												<label class="control-label">Application Number</label>
+												<input type="text" class="form-control">
+
+											</div>
+											<div class="col-sm-6">
+												<label class="control-label">Jurisdiction</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="attorneyDocTab">
+								<form class="form-horizontal">
+									<div class="form-group">
+										<div class="col-sm-12">
+											<div class="col-sm-6">
+												<label class="control-label">Attorney Docket Number</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="mailingDateTab">
+								<form class="form-horizontal">
+									<div class="form-group">
+										<div class="col-sm-12">
+											<div class="col-sm-6">
+												<label class="control-label">Family ID</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="moreTab">
+								<div class="form-horizontal">
+									<div class="form-group">
+										<div class="col-sm-12">
+											<div class="col-sm-6">
+												<label class="control-label">Jurisdiction</label>
+												<input type="text" class="form-control">
+											</div>
+											<div class="col-sm-6">
+												<label class="control-label">Application#</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-12">
+											<div class="col-sm-6">
+												<label class="control-label">Upload Date</label>
+												<div class="daterange-picker">
+							          				<input type="text" class="form-control date">
+													<span class="calendar"><i class="glyphicon glyphicon-calendar"></i></span>
+							          			</div>
+												
+											</div>
+											<div class="col-sm-6">
+												<label class="control-label">Document Description</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-12">
+											<div class="col-sm-6">
+												<label class="control-label">Uploaded By</label>
+												<input type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="search-footer clearfix">
+							<div class="text-left">
+								<button class="btn btn-cancel" id="hideSearch">Cancel</button>
+								<button class="btn btn-submit" id="gotoSearch">Search</button>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li><a href=""><i data-alt="calendar"><img src="images/svg/export.svg" class="icon20x"></i> Export</a></li>
+			</ul>
+		  	<!-- Nav tabs -->
+			<ul class="nav nav-tabs custom-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#activeDocTab" role="tab" data-toggle="tab">Active Documents</a></li>
+				<li role="presentation"><a href="#inactiveDocTab" role="tab" data-toggle="tab">Inactive Documents</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="activeDocTab">
+					<div class="form-horizontal">
+						<div class="list-doc-control">
+							<span class="title">List of Documents</span> 
+							<input type="checkbox" id="uploadedDocs" checked=""><label class="control-label" for="uploadedDocs">Show My Uploaded Documents Only</label>
+						</div>
+					</div>
+					<table class="table custom-table"  id="uploaded_checked">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Jurisdiction</th>
+								<th>Application #</th>
+								<th>Mailing Date <i class="icon-sort"><img src="images/svg/sort.svg" class="icon16x"></i></th>
+								<th>Document Description</th>
+								<th>Uploaded by</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="has-hidden-row odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>JP</td>
+								<td>2014511864</td>
+								<td>Dec 1, 2015</td>
+								<td>Decision to grant</td>
+								<td>John Mayer <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="hidden-row">
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>Nov 12, 2014</td>
+								<td>First office action</td>
+								<td>Jane Smith<br/>Nov 28, 2014</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>
+							
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>CN</td>
+								<td>201280026538</td>
+								<td>Nov 30, 2015</td>
+								<td>First office action</td>
+								<td>John Mayer <br/>Dec 14, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>EP</td>
+								<td>13174272</td>
+								<td>Nov 20, 2015</td>
+								<td>Search Report</td>
+								<td>John Mayer <br/>Dec 14, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>TW</td>
+								<td>103121664</td>
+								<td>Dec 5, 2015</td>
+								<td>First office action</td>
+								<td>John Mayer <br/>Dec 14, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>KR</td>
+								<td>20130159763</td>
+								<td>Dec 4, 2015</td>
+								<td>Notice of Allowance</td>
+								<td>John Mayer <br/>Dec 11, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>PCT</td>
+								<td>PCT/CN14/28625</td>
+								<td>Dec 3, 2015</td>
+								<td>Search Report</td>
+								<td>John Mayer <br/>Dec 10, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>EP</td>
+								<td>14197874</td>
+								<td>Dec 2, 2015</td>
+								<td>Office Action</td>
+								<td>John Mayer <br/>Dec 10, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>CN</td>
+								<td>201410367088</td>
+								<td>Nov 27, 2015</td>
+								<td>First office action</td>
+								<td>John Mayer <br/>Dec 09, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>KR</td>
+								<td>20120156147</td>
+								<td>Nov 26, 2015</td>
+								<td>Notice of Non-final rejection</td>
+								<td>John Mayer <br/>Dec 09, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>14312345</td>
+								<td>Dec 7, 2015</td>
+								<td>Final Rejection</td>
+								<td>John Mayer <br/>Dec 08, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+
+					<table class="table custom-table"  id="uploaded_unchecked">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Jurisdiction</th>
+								<th>Application #</th>
+								<th>Mailing Date <i class="icon-sort"><img src="images/svg/sort.svg" class="icon16x"></i></th>
+								<th>Document Description</th>
+								<th>Uploaded by</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>JP</td>
+								<td>2014511864</td>
+								<td>Dec 1, 2015</td>
+								<td>Decision to grant</td>
+								<td>John Mayer <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<!--<tr class="hidden-row">								
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>Nov 12, 2014</td>
+								<td>First office action</td>
+								<td>Jane Smith<br/>Nov 28, 2014</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>-->
+
+							<tr class="has-hidden-row even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>14/123,432</td>
+								<td>Dec 15, 2015</td>
+								<td>Issue Notification</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="hidden-row">
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>May 21, 2015</td>
+								<td>Notice of Allowance</td>
+								<td>System<br/>May 21, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>
+							<tr class="hidden-row">
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>Oct 20, 2014</td>
+								<td>Final Rejection</td>
+								<td>System<br/>Oct 20, 2014</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>
+							<tr class="hidden-row">
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>Apr 10, 2014</td>
+								<td>Non-final Rejection</td>
+								<td>System<br/>April 10, 2014</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>
+							<tr class="hidden-row">
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>Apr 10, 2014</td>
+								<td>List of references cited by examiner</td>
+								<td>System<br/>April 10, 2014</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>
+							<tr class="hidden-row">
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>Apr 10, 2014</td>
+								<td>List of References cited by applicant and considered by examiner</td>
+								<td>System<br/>April 10, 2014</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>
+							<tr class="hidden-row">
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>Feb 12, 2013</td>
+								<td>IDS</td>
+								<td>System<br/>Feb 16, 2013</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>
+							<tr class="hidden-row">
+								<td colspan="3" class="bdr-btm-none"></td>
+								<td>Feb 12, 2013</td>
+								<td>Spec</td>
+								<td>System<br/>Feb 16, 2013</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+									<div class="action-success">Active</div>
+								</td>
+							</tr>
+
+							
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>14/209,233</td>
+								<td>Dec 15, 2015</td>
+								<td>Non-Final Rejection</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>14/210,289</td>
+								<td>Dec 15, 2015</td>
+								<td>Requirement of Restriction / Election</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>11/688,309</td>
+								<td>Dec 15, 2015</td>
+								<td>Notice of Allowance</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>12/689,862</td>
+								<td>Dec 15, 2015</td>
+								<td>Final Rejection</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>13/559,336</td>
+								<td>Dec 15, 2015</td>
+								<td>Notice of Allowance</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>12/574,631</td>
+								<td>Dec 15, 2015</td>
+								<td>Examiner Initiated Interview Summary</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+
+							<tr class="odd">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>PCT/US14/59836</td>
+								<td>Dec 15, 2015</td>
+								<td>Search Report</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+							<tr class="even">
+								<td class="text-center"><span class="icon icon-plus"></span></td>
+								<td>US</td>
+								<td>13/910,709</td>
+								<td>Dec 15, 2015</td>
+								<td>Non-final rejection</td>
+								<td>System <br/>Dec 15, 2015</td>
+								<td>
+									<div class="action-btns-grid">
+									<a href="" data-target="#myModal4" data-toggle="modal"><i><img src="images/svg/view-doc.svg" class="icon16x"></i> View Document</a>
+									<a href="javascript:void(0)"  class="action-danger"><i><img src="images/svg/delete.svg" class="icon16x"></i> Delete</a>
+									</div>
+								</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+
+
+					<nav class="pagination-control clearfix">
+						<ul class="pagination">
+						    <li>
+						      <a href="#" aria-label="Previous">
+						        <span aria-hidden="true"><span class="glyphicon glyphicon-menu-left"></span></span>
+						      </a>
+						    </li>
+						    <li class="active"><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						    <li>
+						      <a href="#" aria-label="Next">
+						        <span aria-hidden="true"><span class="glyphicon glyphicon-menu-right"></span></span>
+						      </a>
+						    </li>
+					  	</ul>  
+					  	<div class="form-inline">
+							<span>Showing</span>
+							<select class="form-control">
+									<option>10</option>
+									<option>20</option>
+									<option>50</option>
+							</select>
+							<span>per page</span>
+						</div>
+					</nav>
+				</div>
+
+				<div role="tabpanel" class="tab-pane" id="inactiveDocTab">
+					<table class="table custom-table">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Jurisdiction</th>
+								<th>Application #</th>
+								<th>Mailing Date <i class="icon-sort"><img src="images/svg/sort.svg" class="icon16x"></i></th>
+								<th>Document Description</th>
+								<th>Last Edited</th>
+								<th>Status</th>
+							</tr>
+							<tbody>
+								<tr class="odd">
+									<td class="text-center"><span class="icon icon-plus"></span></td>
+									<td>JP</td>
+									<td>20135021231</td>
+									<td>Oct 20, 2015</td>
+									<td>Decision to grant</td>
+									<td><div class="table-data">Sarah Paulson <br/> Nov 13, 2015  <a href="javascript:void(0)"><i><img src="images/svg/comment.svg" class="icon20x pull-right"></i></a></div></td>
+									<td><div class="action-danger">Deleted</div></td>
+								</tr>
+								<tr class="even">
+									<td class="text-center"><span class="icon icon-plus"></span></td>
+									<td>KR</td>
+									<td>20130145673</td>
+									<td>Jul 27, 2015</td>
+									<td>Issue Notification</td>
+									<td><div class="table-data">Sarah Paulson <br/> Aug 7, 2015   <a href="javascript:void(0)"><i><img src="images/svg/comment.svg" class="icon20x pull-right"></i></a></div></td>
+									<td><div class="action-danger">Deleted</div></td>
+								</tr>
+								<tr class="odd">
+									<td class="text-center"><span class="icon icon-plus"></span></td>
+									<td>US</td>
+									<td>14/209,233</td>
+									<td>Jan 12, 2015</td>
+									<td>Non-final rejection</td>
+									<td><div class="table-data">Jim Evans <br/> Jul 10, 2015  <a href="javascript:void(0)"><i><img src="images/svg/comment.svg" class="icon20x pull-right"></i></a></div></td>
+									<td><div class="action-danger">Deleted</div></td>
+								</tr>
+								
+							</tbody>
+						</thead>
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+		 <!--bulk upload control-->
+        <div class="bulk-upload-control" id="FileUploadProgress" style="display: none">
+            <div class="text-right upload-size"></div>
+            <div class="upload-progress-block">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%" id="progressoffileupload">
+                       <span id="percent">0%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-9 col-lg-10 upload-details">
+                    <div class="files-uploaded"><span></span>  <span></span></div>
+                    <div class="upload-speed"></div>
+                    <div class="remaining-time"><span id="totalSize"></span></div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+
+	<!-- new document -->
+	<div class="modal custom fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Add New Document</h4>
+	      </div>
+	      <div class="modal-body">
+		        <form class="form-horizontal">
+		        	<div class="form-group">
+		        		<div class="col-sm-6">
+		        			<label class="control-label">Application #</label>
+		        			<input type="text" class="form-control" value="123456918273567">
+		        		</div>
+		        		<div class="col-sm-6">
+		        			<label class="control-label">Jurisdiction</label>
+		        			<input type="text" class="form-control" value="US">	
+		        		</div>
+		        	</div>
+		        	<div id="addNewDocDetail">
+			        	<div class="form-group">
+			        		<div class="col-sm-6">
+			        			<label class="control-label">Mailing Date</label>
+			        			<div class='input-group date datepicker' id='datetimepicker3'>
+				                    <input type='text' class="form-control" />
+				                    <span class="input-group-addon">
+				                        <i class="glyphicon glyphicon-calendar"></i>
+				                    </span>
+				                </div>
+			        			
+			        		</div>
+			        	</div>
+			            <div class="form-group">
+							<div class="col-sm-12">
+								<label class="control-label">Document Description</label>
+								<select class="form-control" size="5">
+					                <option value="List of referencesList of references cited by examiner">List of referencesList of references cited by examiner</option>
+					                <option value="List of References cited by applicant and considered by examiner">List of References cited by applicant and considered by examiner</option>
+					                <option value="Ex Parte Quayle Action">Ex Parte Quayle Action</option>
+					                <option value="Final Rejection">Final Rejection</option>
+					                <option value="Non-Final Rejection">Non-Final Rejection</option>
+					                <option value="Requirement for Restriction/Election">Requirement for Restriction/Election</option>
+					                <option value="Application summary of interview (PTOL-413)">Application summary of interview (PTOL-413)</option>
+					                <option value="Examiner initiated interview summary (PTOL-413B)">Examiner initiated interview summary (PTOL-413B)</option>
+					                <option value="Issue Notification">Issue Notification</option>
+					                <option value="Notice of DO/EO Acceptance Mailed">Notice of DO/EO Acceptance Mailed</option>
+					                <option value="EFS Acknowledgment Receipt">EFS Acknowledgment Receipt</option>
+					                <option value="Notice of Allowance and fees due (PTOL-85">Notice of Allowance and fees due (PTOL-85</option>
+					                <option value="Specification">Specification</option>
+				              	</select>
+							</div>
+			            </div>
+			            <div class="form-group">
+							<div class="col-sm-12">
+								<label class="control-label">Attachment</label>
+								<div class="input-group">
+									<input id="uploadFile" placeholder="File Location..." disabled="disabled" class="form-control" />
+									<div class="fileUpload btn btn-blue input-group-btn">
+									    <span>Browse</span>
+									    <input type="file" id="uploadBtn" class="upload" multiple />
+									</div>
+								</div>
+							</div>
+			            </div>
+			            <div class="form-group">
+							<div class="col-sm-12">
+								<input type="checkbox" id="processDocCheck">
+								<label class="control-label" for="processDocCheck">I want to enter references for this document ASAP</label>
+							</div>
+			            </div>
+		            </div>
+	    		</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+	        <button type="button" class="btn btn-submit" id="showAddNewDoc">Search</button>
+	        <button type="button" class="btn btn-submit" id="createDoc">Create</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Bulk Upload Modal -->
+	<div class="modal custom fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Bulk Upload</h4>
+	      </div>
+	      <div class="modal-body">
+		        <form class="form-horizontal">
+	    			<div class="form-group">
+						<div class="col-sm-12">
+							<label class="control-label">Select Files to Upload</label>
+							<div class="input-group">
+								<input id="uploadFile" placeholder="File Location..." disabled="disabled" class="form-control" />
+								<div class="fileUpload btn btn-blue input-group-btn">
+								    <span>Browse</span>
+								    <input type="file" id="uploadBtn" class="upload" multiple />
+								</div>
+							</div>
+						</div>
+		            </div>
+	    		</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+	        <button type="button" class="btn btn-submit" data-dismiss="modal" onclick="showUpload()">Upload Now</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Pair Audit Modal -->
+	<div class="modal custom fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">PAIR Audit</h4>
+	      </div>
+	      <div class="modal-body">
+		        <form class="form-horizontal">
+	    			<div class="form-group">
+						<div class="col-sm-12">
+							<label class="control-label">Select Files to Upload</label>
+							<div class="input-group">
+								<input id="uploadFile" placeholder="File location..." disabled="disabled" class="form-control" />
+								<div class="fileUpload btn btn-blue input-group-btn">
+								    <span>Browse</span>
+								    <input type="file" id="uploadBtn" class="upload" multiple />
+								</div>
+							</div>
+						</div>
+		            </div>
+		            <div class="form-group">
+		            	<div class="col-sm-12">
+		            		<table class="table custom-table single-head-table">
+								<thead>
+									<tr>
+										<th colspan="2">For Date Range</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="odd">
+										<td><span class="date-large">Aug - 01 - 2015</span></td>
+										<td><span class="date-large">Aug - 31 - 2015</span></td>
+									</tr>
+								</tbody>
+							</table>	
+		            	</div>
+		            </div>
+	    		</form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+	        <button type="button" class="btn btn-submit">Submit</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- View Document -->
+	<div class="modal custom fade modal-wide" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">View Document</h4>
+	      </div>
+	      	<div class="modal-body">
+		        <div class="row">
+		        	<div class="col-sm-5">
+		        		<div class="form-horizontal">
+		        			<div class="form-group">
+			        			<div class="col-sm-6">
+			        				<label class="control-label">Application No</label>
+			        				<div class="form-contorl-static">12345678</div>
+			        			</div>
+			        			<div class="col-sm-6">
+			        				<label class="control-label">Jurisdiction</label>
+			        				<div class="form-contorl-static">USA</div>
+			        			</div>
+			        		</div>
+			        		<div class="form-group">
+			        			<div class="col-sm-6">
+			        				<label class="control-label">Mailing Date</label>
+			        				<div class="form-contorl-static">12/10/2015</div>
+			        			</div>
+			        		</div>
+			        		<div class="form-group">
+			        			<div class="col-sm-12">
+			        				<label class="control-label">Document Description</label>
+			        				<div class="form-contorl-static">Default Value selected at the time of Upload</div>
+			        			</div>
+			        		</div>
+		        		</div>
+		        	</div>
+		        	<div class="col-sm-7">
+		        		<div class="pdf-preview"><img src="images/pdf-reader.png" class="img-responsive"></div>
+		        		<nav>
+						  <ul class="pagination">
+						    <li>
+						      <a href="#" aria-label="Previous">
+						        <span aria-hidden="true"><span class="glyphicon glyphicon-menu-left"></span></span>
+						      </a>
+						    </li>
+						    <li><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						    <li>
+						      <a href="#" aria-label="Next">
+						        <span aria-hidden="true"><span class="glyphicon glyphicon-menu-right"></span></span>
+						      </a>
+						    </li>
+						  </ul>
+						</nav>	
+		        	</div>
+		        </div>
+      		</div>
+	    </div>
+	  </div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/daterangepicker.js"></script>
+	<script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+
+	<script type="text/javascript">
+		//table expand collapse js
+		$(function(){
+			$(".hidden-row").hide();
+			$(".has-hidden-row span").on("click", function(){
+
+				if($(this).hasClass("icon-plus")){
+					$(this).parents(".has-hidden-row").addClass("active");
+					$(this).removeClass("icon-plus").addClass("icon-minus");
+					$(this).parents(".has-hidden-row").siblings(".hidden-row").toggle();
+				}
+				else if($(this).hasClass("icon-minus")){
+					$(this).parents(".has-hidden-row").removeClass("active");
+					$(this).removeClass("icon-minus").addClass("icon-plus");
+					$(this).parents(".has-hidden-row").siblings(".hidden-row").toggle();
+				}
+
+				
+			});
+		
+		});
+	</script>
+	<script type="text/javascript">
+		$(function(){
+
+
+	/////////////////////////
+		$("#gotoSearch").on("click", function(){
+			window.location.assign("search.html");
+		});		
+	/////////////////////////
+
+		var searchHeight = $('.search-dropdown').height();
+
+		$(".search-control .icon-search").on("click", function(){
+			$('.search-dropdown').slideToggle("show");
+		});
+
+		$("#hideSearch").on("click", function(){
+			$(this).parents(".search-input").removeClass("active");
+			$(".search-dropdown").slideUp("hide");
+		});
+
+		});
+	</script>
+	<script type="text/javascript">
+
+		//file input browse
+		$(function(){
+			
+			document.getElementById("uploadBtn").onchange = function () {
+	    	document.getElementById("uploadFile").value = this.value;
+			};
+			$("#removeFileUpload").on("click", function(e){
+				e.preventDefault();
+				document.getElementById("uploadFile").value = "";
+			});
+		});
+
+		//filter js
+		$(function(){
+
+			$(document).on('click', '.filter-dropdown', function (e) {
+			        e.stopPropagation();
+			    });
+			 $(".filter-dropdown .btn-cancel").on("click", function(){
+					$("body").click();
+				});
+		 
+		});
+
+
+		//date range picker js
+			$(document).ready(function(){
+		        $(".daterange-picker .date").daterangepicker({
+		        	opens:'left',
+		        	 autoUpdateInput: false,
+		        	locale: {
+				      format: 'MMM DD, YYYY',
+				      cancelLabel: 'Clear'
+				    }
+		        });
+		         $('.daterange-picker i').click(function() {
+			      $(this).parents(".daterange-picker").find('input').click();
+			    });
+
+		         $('.daterange-picker .date').on('cancel.daterangepicker', function(ev, picker) {
+					  $(this).parents(".daterange-picker").find('input').val('');
+				});
+
+		         $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+				      $(this).val(picker.startDate.format('MMM DD, YYYY') + ' - ' + picker.endDate.format('MMM DD, YYYY'));
+				  });
+
+				  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+				      $(this).val('');
+				  });
+		    });
+
+	</script>
+	<script type="text/javascript">
+	function removeModal(){
+		$(this).on("click", function(){
+		$("#myModal").modal('hide');
+		$(".modal-backdrop").remove();
+	});
+	}
+	</script>
+	<script type="text/javascript">
+	    $(function () {
+	    	$('#datetimepicker1').datepicker();
+	        $('#datetimepicker2').datepicker();
+	        $('#datetimepicker3').datepicker({
+	        	format: "M dd, yyyy"
+	        });
+
+	    });
+
+	</script>
+	<script type="text/javascript">
+		$(function(){
+
+			$("#viewDoc").on("click", function(){
+				var $dataHeight = $("#viewDocContainer table").height() + $("#viewDoc").height();
+				
+				if($("#viewDocContainer").height() > 40){
+					$("#viewDocContainer").animate({"height": 38}, 1000);
+					$(this).text("+ View Related Documents");
+				}
+
+				else {
+					$("#viewDocContainer").animate({"height": $dataHeight}, 1000);
+					$(this).text("- Hide Related Documents");
+				}
+			});
+
+			//filter link
+
+			$("#filterSearchLink").hide();
+
+
+			$(document).on("click", ".nav.nav-tabs.custom-tabs li:last-child", function(){
+				if($(".search-dropdown .nav-tabs li:last-child").hasClass("active")){
+					$("#filterSearchLink").show();
+				}
+			
+			});
+			$(document).on("click", ".nav.nav-tabs.custom-tabs li:not(:last-child)", function(){
+				$("#filterSearchLink").hide();
+			
+			});
+			
+		
+		});
+	</script>
+
+
+	<script type="text/javascript">
+		function showUpload(){
+				$(".bulk-upload-control").show();
+			}
+		$(function(){
+			$("#createDoc, #addNewDocDetail, .bulk-upload-control").hide();
+			$("#showAddNewDoc").on("click", function(){
+				$("#createDoc, #addNewDocDetail").show();
+				$(this).hide();
+			});
+
+		
+
+		});
+
+
+		$('#uploaded_unchecked').hide();
+		
+		$("#uploadedDocs").click(function() {
+		    if($(this).is(":checked")) {
+		        $("#uploaded_checked").show();
+		        $("#uploaded_unchecked").hide();
+		    } else {
+		        $("#uploaded_unchecked").show();
+		        $("#uploaded_checked").hide();
+		    }
+		});
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:s="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<s:http pattern="/favicon.ico" security="none" />
+	<s:http pattern="/static/**" security="none" />
+	<s:http pattern="/assets/**" security="none" />
+	<s:http pattern="/css/**" security="none" />
+	<s:http pattern="/login" security="none" />
+	<s:http pattern="/forgotPassword*" security="none" />
+	<!-- <s:http pattern="/otp*" security="none" /> -->
+
+	<s:http use-expressions="true" auto-config="false"
+		entry-point-ref="loginEntryPoint" disable-url-rewriting="true">
+		<s:custom-filter ref="authenticationFilter" position="FORM_LOGIN_FILTER" />
+		<s:intercept-url pattern="/login*" access="permitAll()" />
+		<s:intercept-url pattern="/i18n/loadProp/**" access="permitAll()" />
+		<s:intercept-url pattern="/changePassword" access="permitPasswordChangeUrl()" />
+		<s:intercept-url pattern="/otp" access="permitOTPUrl()" />
+		<s:intercept-url pattern="/otp/**" access="permitOTPUrl()" />
+
+		<s:expression-handler ref="bbExpressionHandler" />
+		<s:intercept-url pattern="/" access="permitUrl()" />
+		<s:intercept-url pattern="/**" access="permitUrl()" />
+		<s:access-denied-handler error-page="/denied" />
+		<s:logout delete-cookies="JSESSIONID" logout-success-url="/login"
+			invalidate-session="true" logout-url="/logout" />
+		<!-- <s:anonymous enabled="false"/> -->
+	</s:http>
+
+	<bean id="loginEntryPoint"
+		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<property name="loginFormUrl" value="/login" />
+	</bean>
+
+	<bean id="bbExpressionHandler"
+		class="com.blackbox.ids.services.security.BlackboxWebSecurityExpressionHandler" />
+
+	<bean id="authenticationFilter"
+		class="com.blackbox.ids.services.security.UsernamePasswordAuthenticationFilter">
+		<property name="filterProcessesUrl" value="/j_spring_security_check" />
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationSuccessHandler" ref="authenticationSuccessHandler">
+		</property>
+		<property name="authenticationFailureHandler">
+			<bean
+				class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+				<property name="defaultFailureUrl" value="/login?error=true" />
+			</bean>
+		</property>
+		<constructor-arg ref="userService" />
+	</bean>
+
+	<bean id="authenticationLoggerListener"
+		class="org.springframework.security.authentication.event.LoggerListener" />
+
+	<bean id="authorizationLoggerListener"
+		class="org.springframework.security.access.event.LoggerListener" />
+
+	<s:authentication-manager alias="authenticationManager">
+		<s:authentication-provider ref="userDaoAuthenticationProvider" />
+	</s:authentication-manager>
+
+	<bean id="userDaoAuthenticationProvider"
+		class="com.blackbox.ids.services.security.UserDaoAuthenticationProvider">
+		<property name="userDetailsService">
+			<ref bean="userDetailService"/>
+		</property>
+	</bean>
+</beans>

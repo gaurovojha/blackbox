@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+   
+<tiles-definitions> 
+ <!--  adding the correspondence navigation -->
+    <definition name="correspondence.definition" extends="auth.definition">
+        <put-attribute name="navigation" value="/WEB-INF/jsp/correspondence/correspondenceHeader.jsp" />
+    </definition>
+ <!-- correspondence landing page body -->
+    <definition name="mainCorrespondence" extends="correspondence.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/correspondence/dashboard/correspondence.jsp"/>
+	</definition>
+	
+	<definition name="correspondence-action-items" extends="correspondence.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/correspondence/actionitems/action-items.jsp"/>
+	</definition>
+	
+	<definition name="correspondence-update-request" template="/WEB-INF/jsp/correspondence/actionitems/update-request-data.jsp"/>
+	
+	<definition name="correspondence-upload-request" template="/WEB-INF/jsp/correspondence/actionitems/upload-request-data.jsp"/>
+	
+	<definition name="correspondence-track-application" extends="correspondence.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/correspondence/trackapplication/track-application.jsp"/>
+	</definition>
+	
+	<definition name="correspondence-my-track-application" template="/WEB-INF/jsp/correspondence/trackapplication/my-request-data.jsp"/>
+	
+	<definition name="correspondence-all-track-application" template="/WEB-INF/jsp/correspondence/trackapplication/all-request-data.jsp"/>
+	
+	<definition name="correspondence-review-document" template="/WEB-INF/jsp/correspondence/actionitems/review-document.jsp"/>
+<definition name="new-correspondence" template="/WEB-INF/jsp/correspondence/newCorrespondence.jsp" />
+  <definition name="activeDocuments" template="/WEB-INF/jsp/correspondence/dashboard/active-documents.jsp"/>
+  <definition name="inactiveDocuments" template="/WEB-INF/jsp/correspondence/dashboard/inactive-documents.jsp"/>
+   <definition name="activeDocumentsExpand" template="/WEB-INF/jsp/correspondence/dashboard/active-documents-expand.jsp"/>
+    <definition name="inactiveDocumentsExpand" template="/WEB-INF/jsp/correspondence/dashboard/inactive-documents-expand.jsp"/>
+ <definition name="urgent-request" template="/WEB-INF/jsp/correspondence/urgentCorrespondence.jsp" />
+     <definition name="viewDocument" template="/WEB-INF/jsp/correspondence/dashboard/view-document.jsp"/>
+     <definition name="create-application-request-form" template="/WEB-INF/jsp/correspondence/createApplicationRequestPopup.jsp" />
+      <definition name="search-application-form" template="/WEB-INF/jsp/correspondence/searchApplicationPopup.jsp" />
+     <definition name="create-application-no-access-form" template="/WEB-INF/jsp/correspondence/createApplicationNoAccess.jsp" /> 
+     <definition name="create-application-form" template="/WEB-INF/jsp/correspondence/createApplicationPopUp.jsp" />
+     
+     
+</tiles-definitions>

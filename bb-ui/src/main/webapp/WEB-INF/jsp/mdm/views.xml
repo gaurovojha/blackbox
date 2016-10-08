@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+   
+<tiles-definitions> 
+ 
+    <definition name="mdm.definition" extends="auth.definition">
+        <put-attribute name="navigation" value="/WEB-INF/jsp/mdm/navigation.jsp" />
+    </definition>
+    
+    <definition name="action-items.definition" extends="mdm.definition">
+        <put-attribute name="action-items-navigation" value="/WEB-INF/jsp/mdm/actions/action-items-navigation.jsp" />
+    </definition>
+    
+    <!-- ******************Action Items******************* -->
+    
+    <definition name="actionItems" extends="mdm.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/mdm/actions/action-items-navigation.jsp"/>
+    	<put-attribute name="activeTab" value="navActionItems"/>
+    </definition>
+    
+    <definition name="create-app-records" template="/WEB-INF/jsp/mdm/actions/create-app-records.jsp" />
+    
+    <definition name="create-family-records" template="/WEB-INF/jsp/mdm/actions/create-family-records.jsp" />
+    
+    <definition name="change-req-records" template="/WEB-INF/jsp/mdm/actions/change-req-records.jsp" />
+    
+    <!-- Actions - update Requests -->
+    
+    <definition name="updateAppRecords" template="/WEB-INF/jsp/mdm/actions/update-app-records.jsp"/>
+    
+    <definition name="updateAssigneeRecords" template="/WEB-INF/jsp/mdm/actions/update-assignee-records.jsp"/>
+    
+    <definition name="updatefamilyRecords" template="/WEB-INF/jsp/mdm/actions/update-family-records.jsp"/>
+    
+    <definition name="drafts" extends="mdm.definition">
+        <put-attribute name="body" value="/WEB-INF/jsp/mdm/drafts/draft-header.jsp" />
+        <put-attribute name="activeTab" value="navDrafts"/>
+    </definition>
+    
+    <!-- My Dashboard -->
+    
+    <definition name="mdmDashboard" extends="mdm.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/mdm/dashboard/admin.jsp"/>
+    	<put-attribute name="activeTab" value="navDashboard"/>
+    </definition>
+    <definition name="activeRecords" template="/WEB-INF/jsp/mdm/dashboard/active-records.jsp"/>
+    
+    <definition name="transferRecord" template="/WEB-INF/jsp/mdm/dashboard/transfer-record.jsp"/>
+    
+    <definition name="abandonRecord" template="/WEB-INF/jsp/mdm/dashboard/abandon-record.jsp"/>
+    
+    <definition name="deleteRecordPage" template="/WEB-INF/jsp/mdm/dashboard/delete-record.jsp"/>
+    
+    <definition name="deactivateRecordPage" template="/WEB-INF/jsp/mdm/dashboard/deactivate-record.jsp"/>
+    
+    <definition name="reactivateRecord" template="/WEB-INF/jsp/mdm/dashboard/reactivate-record.jsp"/>
+
+    <definition name="inactiveRecords" template="/WEB-INF/jsp/mdm/dashboard/inactive-records.jsp"/>
+    
+    <definition name="allFamilyRecords" template="/WEB-INF/jsp/mdm/dashboard/all-family-records.jsp"/>
+
+    <definition name="family-view" template="/WEB-INF/jsp/mdm/dashboard/view-family.jsp"/>
+
+    <!-- Create Application - Manual -->
+	<definition name="newApplication" extends="mdm.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/mdm/application/create-application.jsp"/>
+    </definition>
+    
+    <definition name="application-init" template="/WEB-INF/jsp/mdm/application/application-init.jsp" />
+    <definition name="family-search" template="/WEB-INF/jsp/mdm/application/family-search.jsp"/>
+    <definition name="application-details" template="/WEB-INF/jsp/mdm/application/application-details.jsp" />
+    
+    <definition name="application" extends="mdm.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/mdm/application/application.jsp"/>
+    </definition>
+    
+    <definition name="success" template="/WEB-INF/jsp/mdm/application/success.jsp"/>
+</tiles-definitions>

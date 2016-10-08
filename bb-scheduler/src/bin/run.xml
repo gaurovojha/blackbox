@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="project" basedir=".">
+    <description>Scheduler Ant Runner</description>
+	
+	<property name="SCHEDULERDIR" location="../"/>
+	
+	<path id="app-clspath">
+		<pathelement location="${MGTOOLDIR}/etc"/>
+		<fileset dir="${SCHEDULERDIR}/lib">
+		    <include name="**/*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="run">
+		<java classname="com.blackbox.ids.scheduler.loader.SchedulerMain" fork="true">
+			<classpath refid="app-clspath"/>
+		</java>
+	</target>
+</project>

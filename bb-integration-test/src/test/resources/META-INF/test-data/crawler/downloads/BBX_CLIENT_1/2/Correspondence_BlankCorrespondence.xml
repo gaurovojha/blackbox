@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pair:OutgoingCorrespondence xsi:schemaLocation="urn:us:gov:uspto:pair OutgoingCorrespondence.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pair="urn:us:gov:uspto:pair">
+	<pair:FileHeader>
+			<pair:FileCreationTimeStamp>2016-01-11T00:10:55.55</pair:FileCreationTimeStamp>
+	</pair:FileHeader>
+	<pair:CorrespondenceFileHeader>
+		<pair:DocumentCount>2</pair:DocumentCount>
+		<pair:CorrespondenceTimePeriod>90</pair:CorrespondenceTimePeriod>
+	</pair:CorrespondenceFileHeader>
+	<pair:ApplicationCorrespondence>
+		
+	</pair:ApplicationCorrespondence>	
+	</pair:OutgoingCorrespondence>

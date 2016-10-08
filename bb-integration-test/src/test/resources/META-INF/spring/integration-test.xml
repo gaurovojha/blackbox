@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<import resource="classpath:META-INF/spring/blackbox-services.xml"/>
+	<import resource="classpath:META-INF/spring/blackbox-uspto-scrapper.xml"/>
+	
+	<util:properties id="environmentProperties" location="classpath:env-test.properties" />
+
+	<jdbc:initialize-database data-source="dataSource" enabled="true">
+		 <jdbc:script execution="INIT" location="classpath:META-INF/test-db/insert-data.sql" /> 
+		<jdbc:script execution="INIT" location="classpath:META-INF/test-db/insert-crawler-data.sql" />
+	</jdbc:initialize-database>
+	<bean id="jdbcTemplateTest" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean id="outgoingCorrespondenceScrapper" class="com.blackbox.ids.services.crawler.MockOutgoingCorrespondenceScrapper"/>
+	<bean id="privatePairAuditScrapperImpl" class="com.blackbox.ids.services.crawler.MockPrivatePairAuditScrapperImpl"/>
+	<bean id="ifwDownloadDoCScrapperImpl" class="com.blackbox.ids.services.crawler.MockIFWDownloadDocWebCrawlerScrapper"/>
+	
+</beans>

@@ -1,0 +1,5 @@
+Hi 
+  ${mailBody}
+ 
+from
+${senderName}

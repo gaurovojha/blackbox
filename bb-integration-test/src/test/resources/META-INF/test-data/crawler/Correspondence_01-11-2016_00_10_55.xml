@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pair:OutgoingCorrespondence xsi:schemaLocation="urn:us:gov:uspto:pair OutgoingCorrespondence.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pair="urn:us:gov:uspto:pair">
+	<pair:FileHeader>
+			<pair:FileCreationTimeStamp>2016-01-11T00:10:55.55</pair:FileCreationTimeStamp>
+	</pair:FileHeader>
+	<pair:CorrespondenceFileHeader>
+		<pair:DocumentCount>2</pair:DocumentCount>
+		<pair:CorrespondenceTimePeriod>90</pair:CorrespondenceTimePeriod>
+	</pair:CorrespondenceFileHeader>
+	<pair:ApplicationCorrespondence>
+			<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2015-11-25T02:35:56.56</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>14933258</pair:ApplicationNumber> 
+			<pair:FilingDate>2015-11-05</pair:FilingDate>
+			<pair:AttorneyDocketNumber>BB 221015</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Notice to File Missing Parts</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>NTC.MISS.PRT</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2015-11-20</pair:MailRoomDate>
+					<pair:UploadDate>2015-11-19</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>2</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2015-11-24</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Amit Chauhan</pair:EarliestViewBy>
+				</pair:DocumentData>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2015-11-20</pair:MailRoomDate>
+					<pair:UploadDate>2015-11-19</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2015-11-24</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Amit Chauhan</pair:EarliestViewBy>
+				</pair:DocumentData>
+				<pair:DocumentData>
+					<pair:DocumentCategory>Test Category</pair:DocumentCategory>
+					<pair:DocumentDescription>Test Doc Description</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>Test Code</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2015-01-01</pair:MailRoomDate>
+					<pair:UploadDate>2015-11-19</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2015-11-24</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Amit Chauhan</pair:EarliestViewBy>
+				</pair:DocumentData>
+			</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	</pair:ApplicationCorrespondence>	
+	</pair:OutgoingCorrespondence>

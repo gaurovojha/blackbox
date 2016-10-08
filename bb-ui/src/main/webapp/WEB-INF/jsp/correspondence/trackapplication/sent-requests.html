@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blackbox</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+			<a href="javascript:void(0)" class="logo"><img src="images/logo_site.gif" alt="Torry | Morris"></a>
+			<div class="header-right">
+				<a href="reports.html" class="msgs-link">Messages <sup>8</sup></a>
+				<div class="dropdown user-login">
+				  <button class="btn btn-default dropdown-toggle" type="button" id="userdropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+				    John Mayer
+				    <span class="caret"></span>
+				  </button>
+				  <ul class="dropdown-menu" aria-labelledby="userdropdown">
+				    <li><a href="#">Log Out</a></li>
+				  </ul>
+				</div>
+				 <img src="images/logo_ids.gif" alt="IDS">
+			</div>
+		</div>
+	</header>
+	<nav class="main-nav">
+		<div class="container">
+			<ul>
+				<li><a href="dashboard.html">My Dashboard</a></li>
+				<li><a href="action-item.html">Action Items<sup>5</sup></a></li>
+				<li class="active"><a href="sent-requests.html">Track Application</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="main-content container">
+
+
+		<div class="tab-container">
+			<ul class="tab-actions pull-right">
+				<li>
+          			<div class="daterange-picker tab">
+          				<input type="text" class="form-control date">
+						<span class="calendar"><i class="glyphicon glyphicon-calendar"></i></span>
+          			</div>
+				</li>
+				<li><a href=""><i data-alt="calendar"><img src="images/svg/export.svg" class="icon20x"></i> Export</a></li>
+			</ul>
+		  	<!-- Nav tabs -->
+			<ul class="nav nav-tabs custom-tabs" role="tablist">
+				<li role="presentation" class="active"><a href="#updateDocTab" role="tab" data-toggle="tab">My Requests</a></li>
+				<li role="presentation"><a href="#addDocTab" role="tab" data-toggle="tab">All</a></li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="updateDocTab">
+					<table class="table custom-table">
+						<thead>
+							<tr>
+								<th>Jurisdiction</th>
+								<th>Application #</th>
+								<th>Mailing Date <i class="icon-sort"><img src="images/svg/sort.svg" class="icon16x"></i></th>
+								<th>Document Description</th>
+								<th>Requester</th>
+								<th>Approver</th>
+								<th>Status</th>
+							</tr>
+							<tbody>
+								<tr class="odd">
+									<td>KR</td>
+									<td>20130169762</td>
+									<td>Dec 1, 2015</td>
+									<td>First Office Action</td>
+									<td>John Mayer <br/>Dec 11, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-faulty">Pending</div>										
+									</td>
+								</tr>
+								<tr class="even">
+									<td>CN</td>
+									<td>201280034539</td>
+									<td>Nov 20, 2015</td>
+									<td>Decision to grant</td>
+									<td>John Mayer <br/>Dec 7, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-success">Approved</div>
+										<div>Dec 9, 2015</div>
+									</td>
+								</tr>
+								<tr class="odd">
+									<td>JP</td>
+									<td>2014591868</td>
+									<td>Oct 13, 2015</td>
+									<td>First Office Action</td>
+									<td>John Mayer <br/>Nov 10, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-success">Approved</div>
+										<div>Nov 13, 2015</div>
+									</td>
+								</tr>
+								<tr class="even">
+									<td>WO</td>
+									<td>PCT/CN14/38721</td>
+									<td>Jul 10, 2015</td>
+									<td>Search report</td>
+									<td>John Mayer <br/>July 15, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-success">Approved</div>
+										<div>Jul 16, 2015</div>
+									</td>
+								</tr>
+								<tr class="odd">
+									<td>US</td>
+									<td>14/212,246</td>
+									<td>Jun 25, 2015</td>
+									<td>Non-final Rejection</td>
+									<td>John Mayer <br/>june 27, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-success">Approved</div>
+										<div>Jul 10, 2015</div>
+									</td>
+								</tr>
+								
+
+							</tbody>
+						</thead>
+					</table>
+				</div>
+				<div role="tabpanel" class="tab-pane" id="addDocTab">
+					<table class="table custom-table">
+						<thead>
+							<tr>
+								<th>Jurisdiction</th>
+								<th>Application #</th>
+								<th>Mailing Date <i class="icon-sort"><img src="images/svg/sort.svg" class="icon16x"></i></th>
+								<th>Document Description</th>
+								<th>Requester</th>
+								<th>Approver</th>
+								<th>Status</th>
+							</tr>
+							<tbody>
+								<tr class="odd">
+									<td>KR</td>
+									<td>20130169762</td>
+									<td>Dec 1, 2015</td>
+									<td>First Office Action</td>
+									<td>John Mayer <br/>Dec 11, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-faulty">Pending</div>
+										
+									</td>
+								</tr>
+								<tr class="even">
+									<td>TW</td>
+									<td>103171434</td>
+									<td>Nov 30, 2015</td>
+									<td>First Office Action</td>
+									<td>Randy Fowler <br/>Dec 9, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-faulty">Pending</div>										
+									</td>
+								</tr>
+								<tr class="odd">
+									<td>CN</td>
+									<td>201280034539</td>
+									<td>Nov 20, 2015</td>
+									<td>Decision to grant</td>
+									<td>John Mayer <br/>Dec 7, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-success">Approved</div>
+										<div>Dec 9, 2015</div>
+									</td>
+								</tr>
+								<tr class="even">
+									<td>EP</td>
+									<td>11174261</td>
+									<td>Nov 3, 2015</td>
+									<td>Intention to Grant</td>
+									<td>Randy Fowler <br/>Nov 23, 2015</td>
+									<td>Casey Radman</td>
+									<td><div class="action-success">Approved</div>
+										<div>Nov 25, 2015</div></td>
+								</tr>
+								<tr class="odd">
+									<td>EP</td>
+									<td>12174531</td>
+									<td>Oct 30, 2015</td>
+									<td>Communication from Examination division</td>
+									<td>Val McDorthy <br/>Nov 23, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-success">Approved</div>
+										<div>Nov 25, 2015</div>
+									</td>
+								</tr>
+								<tr class="even">
+									<td>JP</td>
+									<td>2014591868</td>
+									<td>Oct 13, 2015</td>
+									<td>First Office Action</td>
+									<td>John Mayer <br/>Nov 10, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-success">Approved</div>
+										<div>Nov 13, 2015</div>
+									</td>
+								</tr>
+								<tr class="odd">
+									<td>WO</td>
+									<td>PCT/TW14/28712</td>
+									<td>Oct 9, 2015</td>
+									<td>Search report</td>
+									<td>Val McDorthy <br/>Oct 23, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-danger">Rejected</div>
+										<div>Oct 28, 2015</div>
+									</td>
+								</tr>
+								<tr class="even">
+									<td>KR</td>
+									<td>20130159832</td>
+									<td>Sep 15, 2015</td>
+									<td>First Office Action</td>
+									<td>Randy Fowler <br/>Oct 1, 2015</td>
+									<td>Casey Radman</td>
+									<td><div class="action-success">Approved</div>
+										<div>Nov 13, 2015</div></td>
+								</tr>
+
+								<tr class="odd">
+									<td>WO</td>
+									<td>PCT/AU14/28631</td>
+									<td>Sep 14, 2015</td>
+									<td>Search report</td>
+									<td>Randy Fowler <br/>Oct 1, 2015</td>
+									<td>Casey Radman</td>
+									<td>
+										<div class="action-danger">Rejected</div>
+										<div>Oct 5, 2015</div>
+									</td>
+								</tr>
+								<tr class="even">
+									<td>CN</td>
+									<td>201410567043</td>
+									<td>Aug 5, 2015</td>
+									<td>First Office Action</td>
+									<td>Val McDorthy <br/>Aug 20, 2015</td>
+									<td>Casey Radman</td>
+									<td><div class="action-success">Approved</div>
+										<div>Aug 21, 2015</div></td>
+								</tr>
+
+							</tbody>
+						</thead>
+					</table>
+
+
+					<nav class="pagination-control clearfix">
+						<ul class="pagination">
+						    <li>
+						      <a href="#" aria-label="Previous">
+						        <span aria-hidden="true"><span class="glyphicon glyphicon-menu-left"></span></span>
+						      </a>
+						    </li>
+						    <li class="active"><a href="#">1</a></li>
+						    <li><a href="#">2</a></li>
+						    <li><a href="#">3</a></li>
+						    <li><a href="#">4</a></li>
+						    <li><a href="#">5</a></li>
+						    <li>
+						      <a href="#" aria-label="Next">
+						        <span aria-hidden="true"><span class="glyphicon glyphicon-menu-right"></span></span>
+						      </a>
+						    </li>
+					  	</ul>  
+					  	<div class="form-inline">
+							<span>Showing</span>
+							<select class="form-control">
+									<option>10</option>
+									<option>20</option>
+									<option>50</option>
+							</select>
+							<span>per page</span>
+						</div>
+					</nav>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/moment.js"></script>
+	<script type="text/javascript" src="js/daterangepicker.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$(".hidden-row").hide();
+		$(".has-hidden-row span").on("click", function(){
+
+			if($(this).hasClass("icon-plus")){
+				$(this).parents(".has-hidden-row").addClass("active");
+				$(this).removeClass("icon-plus").addClass("icon-minus");
+				$(this).parents(".has-hidden-row").siblings(".hidden-row").toggle();
+			}
+			else if($(this).hasClass("icon-minus")){
+				$(this).parents(".has-hidden-row").removeClass("active");
+				$(this).removeClass("icon-minus").addClass("icon-plus");
+				$(this).parents(".has-hidden-row").siblings(".hidden-row").toggle();
+			}
+
+			
+		});
+	
+	});
+	</script>
+	<script type="text/javascript">
+	$(function(){
+
+		//date range picker js
+			$(document).ready(function(){
+		        $(".daterange-picker .date").daterangepicker({
+		        	opens:'left',
+		        	locale: {
+				      format: 'MMM DD, YYYY',
+				      cancelLabel: 'Clear'
+				    }
+		        });
+		         $('.daterange-picker i').click(function() {
+			      $(this).parents(".daterange-picker").find('input').click();
+			    });
+
+		         $('.daterange-picker .date').on('cancel.daterangepicker', function(ev, picker) {
+					  $(this).parents(".daterange-picker").find('input').val('');
+				});
+		    });
+		/////////////////////////
+		$("#gotoSearch").on("click", function(){
+			window.location.assign("search.html");
+		});		
+	/////////////////////////
+
+		var searchHeight = $('.search-dropdown').height();
+
+		$(".search-control .icon-search").on("click", function(){
+			$('.search-dropdown').slideToggle("show");
+		});
+
+		$("#hideSearch").on("click", function(){
+			$(this).parents(".search-input").removeClass("active");
+			$(".search-dropdown").slideUp("hide");
+		});
+
+	});
+	</script>
+</body>
+</html>

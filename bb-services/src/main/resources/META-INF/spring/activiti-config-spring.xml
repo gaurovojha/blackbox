@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+		
+	<context:component-scan base-package="com.blackbox.ids.workflows.notification"/>
+
+	<bean id="jobExecutor" class="org.activiti.engine.impl.jobexecutor.DefaultJobExecutor"
+		destroy-method="shutdown">
+		<property name="queueSize" value="${bpm.activiti.executor.queueSize}" />
+		<property name="corePoolSize" value="${bpm.activiti.executor.corePoolSize}" />
+		<property name="maxPoolSize" value="${bpm.activiti.executor.maxPoolSize}" />
+	</bean>
+
+	<bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+		<property name="databaseType" value="${bpm.activiti.databaseType}" />
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="databaseSchemaUpdate" value="${bpm.activiti.enableSchemaUpdate}" />
+		<property name="jobExecutorActivate" value="${bpm.activiti.enableWorkflowProcessing}" />
+		<property name="jobExecutor" ref="jobExecutor" />
+		<property name="history" value="full" />
+		<property name="transactionsExternallyManaged" value="true" />
+		<property name="deploymentResources" value="classpath*:/workflows/*.bpmn"/>
+		<property name="deploymentMode" value="single-resource" />
+		<property name="configurators">
+			<list>
+				<bean class="com.blackbox.ids.activiti.identity.BlackboxIdentityConfigurator">
+					<property name="userManagerFactory" ref="activitiUserManagerFactory" />
+					<property name="groupManagerFactory" ref="activitiGroupManagerFactory" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+				
+	<bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+		<property name="processEngineConfiguration" ref="processEngineConfiguration" />
+	</bean>
+
+	<bean id="activitiUserManager"
+		class="com.blackbox.ids.activiti.identity.BlackboxUserManager">
+		<constructor-arg ref="userService" />
+	</bean>
+
+	<bean id="activitiUserManagerFactory"
+		class="com.blackbox.ids.activiti.identity.BlackboxUserManagerFactory">
+		<constructor-arg ref="activitiUserManager" />
+	</bean>
+
+	<bean id="activitiGroupManager"
+		class="com.blackbox.ids.activiti.identity.BlackboxGroupManager">
+		<constructor-arg ref="userService" />
+	</bean>
+
+	<bean id="activitiGroupManagerFactory"
+		class="com.blackbox.ids.activiti.identity.BlackboxGroupManagerFactory">
+		<constructor-arg ref="activitiGroupManager" />
+	</bean>
+
+	<bean id="repositoryService" factory-bean="processEngine"
+		factory-method="getRepositoryService" />
+	<bean id="runtimeService" factory-bean="processEngine"
+		factory-method="getRuntimeService" />
+	<bean id="taskService" factory-bean="processEngine"
+		factory-method="getTaskService" />
+	<bean id="historyService" factory-bean="processEngine"
+		factory-method="getHistoryService" />
+	<bean id="managementService" factory-bean="processEngine"
+		factory-method="getManagementService" />
+	<bean id="formService" factory-bean="processEngine"
+		factory-method="getFormService" />
+	<bean id="identityService" factory-bean="processEngine"
+		factory-method="getIdentityService" />
+		
+</beans>
+

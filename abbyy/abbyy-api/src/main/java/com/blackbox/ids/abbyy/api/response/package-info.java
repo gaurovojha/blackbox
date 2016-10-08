@@ -1,0 +1,1 @@
+package com.blackbox.ids.abbyy.api.response;

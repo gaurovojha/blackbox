@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+   
+<tiles-definitions> 
+ 	
+ 	<!--  *************** REFEREENCE-NAVIGATION-BAR ********************** -->
+ 	
+ 	<!--  reference navigation -->
+ 	
+ 	<definition name="reference.noAccess" extends="auth.definition">
+        <put-attribute name="navigation" value="/WEB-INF/jsp/reference/referenceNoAccess.jsp" />
+    </definition>
+    
+    <definition name="reference.definition" extends="auth.definition">
+        <put-attribute name="navigation" value="/WEB-INF/jsp/reference/reference-header.jsp" />
+    </definition>
+    
+ 	<!-- reference landing page -->
+    <definition name="reference.dashboard" extends="reference.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/dashboard/dashboard-navigation.jsp"/>
+	</definition>
+	
+ 	<!-- reference management navigation -->
+ 	
+    <definition name="reference.management" extends="reference.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/management/reference-management-navigation.jsp"/>
+	</definition>
+	
+ 	<!-- reference flow rule navigation -->
+    <definition name="reference.flow.rule" extends="reference.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/flowRules/reference-flow-rule-navigation.jsp"/>
+	</definition>
+
+	<!--  *************** MY-DASHBOARD ********************** -->
+
+	<!-- reference-entry header -->
+    <definition name="reference.entry.header" template="/WEB-INF/jsp/reference/dashboard/reference-entry-header.jsp">
+	</definition>
+	
+	<!-- reference-entry records -->
+    <definition name="reference.entry.records" template="/WEB-INF/jsp/reference/dashboard/reference-entry-records.jsp">
+	</definition>
+
+	<!-- update reference header -->
+    <definition name="update.reference.header" template="/WEB-INF/jsp/reference/dashboard/update-reference-header.jsp">
+	</definition>
+	
+	<!-- update reference records -->
+    <definition name="update.reference.records" template="/WEB-INF/jsp/reference/dashboard/update-reference-records.jsp">
+	</definition>
+	
+	<!-- duplicate check header -->
+    <definition name="duplicate.check.reference.header" template="/WEB-INF/jsp/reference/dashboard/duplicate-check-reference-header.jsp">
+	</definition>
+	
+	<!-- duplicate check records -->
+	<definition name="duplicate.check.reference.records" template="/WEB-INF/jsp/reference/dashboard/duplicate-check-reference-records.jsp">
+	</definition>
+	
+	<!--  *************** REFERENCE-MANAGEMENT ************************ -->
+		
+	<!-- all records -->
+    <definition name="all-records" template="/WEB-INF/jsp/reference/management/all-records.jsp"/>
+	
+	<!-- all records-details -->
+    <definition name="all-records-detail" template="/WEB-INF/jsp/reference/management/all-records-expand.jsp"/>
+    
+	<!-- pending reference -->
+    <definition name="pending-reference" template="/WEB-INF/jsp/reference/management/pending-reference-list.jsp"/>
+    
+    <!-- pending reference details -->
+    <definition name="pending-reference-detail" template="/WEB-INF/jsp/reference/management/pending-reference-expand.jsp"/>
+	
+	<!--  *************** REFERENCE-FLOW-RULES ************************ -->
+	
+	<!-- all records -->
+    <definition name="flow-rule-all-records" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/flowRules/all-records.jsp"/>
+	</definition>
+	
+	<!-- notifications -->
+    <definition name="flow-rule-notifications" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/flowRules/notification-list.jsp"/>
+	</definition>
+	
+	<!--  *************** COMMON ACTIONS ************************ -->
+	
+	<!-- create new reference -->
+    <definition name="create-new-reference" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/create-reference.jsp"/>
+	</definition>
+		
+	<!--  *************** DASHBOARD ACTIONS ************************ -->
+	
+	<!-- verify duplicate NPL -->
+    <definition name="verify-duplicate-npl" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/verify-duplicate-npl.jsp"/>
+	</definition>
+	
+	<!-- new reference self citation -->
+    <definition name="new-reference-self-citation" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/new-reference-self-citation.jsp"/>
+	</definition>
+	
+	<!-- create new reference self citation -->
+    <definition name="create-reference-self-citation" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/create-new-reference-self-citation.jsp"/>
+	</definition>
+	
+	<!-- add reference auto add -->
+    <definition name="add-reference-auto-add" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/add-reference-auto-add.jsp"/>
+	</definition>
+	
+	<!-- add reference details -->
+    <definition name="add-reference-detail" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/add-reference-detail.jsp"/>
+	</definition>
+	
+	<!-- add reference ocr done -->
+    <definition name="add-reference-ocr-done" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/add-reference-ocr-done.jsp"/>
+	</definition>
+	
+	<!-- add reference ocr failed-->
+    <definition name="add-reference-ocr-fail" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/add-reference-ocr-failed.jsp"/>
+	</definition>
+	
+	<!-- search by application list  -->
+    <definition name="new-reference-self-citation-search-list" template="/WEB-INF/jsp/reference/actions/new-reference-self-citation-search-list.jsp"/>
+    
+    <!-- Delete confirmation -->
+    <definition name="delete-reference-popup" template="/WEB-INF/jsp/reference/actions/delete-reference-popup.jsp"/>
+    
+    
+	<!--  *************** REFERENCE MANAGEMENT ACTIONS ************************ -->
+
+	<!-- review references -->
+    <definition name="review-references" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/review-references.jsp"/>
+	</definition>
+	<!-- add reference for pending entries -->
+	<definition name="add-reference-pending-entry" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/add-reference-pending-entry.jsp"/>
+	</definition>
+	<!-- add references-->
+	<definition name="add-reference"  template ="/WEB-INF/jsp/reference/actions/add-reference.jsp">
+   </definition>
+   <definition name="add-reference-pending-entry-list"  template ="/WEB-INF/jsp/reference/actions/add-reference-pending-entry-list.jsp">
+   </definition>
+
+	<!--  *************** REFERENCE FLOW RULE ACTIONS ************************ -->
+	
+	<!-- create references flow rule-->
+    <definition name="create-reference-flow-rule" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/create-reference-flow-rule.jsp"/>
+	</definition>
+	
+	<!-- create family linkage -->
+    <definition name="create-family-linkage" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/create-family-linkage.jsp"/>
+	</definition>
+	
+	<!-- create subject matter linkage -->
+    <definition name="create-subject-matter-linkage" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/create-subject-matter-linkage.jsp"/>
+	</definition>
+	
+	<!-- ============================= REFERENCE FLOW RULE ================================= -->
+	<definition name="reference-flow-rule-navigation" extends="reference.definition">
+        <put-attribute name="body" value="/WEB-INF/jsp/reference/flowRules/reference-flow-rule-navigation.jsp" />
+    </definition>
+    
+    <!-- <definition name="activeRecords" template="/WEB-INF/jsp/reference/flowRules/ref-family-link-records.jsp"/> -->
+    
+    <definition name="flowrule-allrecords-data" template="/WEB-INF/jsp/reference/flowRules/flowrule-allrecords-data.jsp">
+	</definition>
+	
+	<!-- new reference self citation -->
+<!--     <definition name="reference-flowrule-new-rule" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/flowRules/reference-flowrule-new-rule.jsp"/>
+	</definition> -->
+	
+	<!-- review flow rule reference for family -->
+    <definition name="reference-review-family-rules-edit" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/actions/reference-review-family-rules-edit.jsp"/>
+	</definition>
+	
+<!-- 	<definition name="reference.flow.family.records" template="/WEB-INF/jsp/reference/flowRules/familyLink/reference-flow-rules-edit-records.jsp">
+	</definition> -->
+	
+	<definition name="family-link-dest-data" template="/WEB-INF/jsp/reference/flowRules/familyLink/family-link-dest-data.jsp">
+	</definition>
+	
+<!-- 	<definition name="reference-flow-rules-edit-sml-header" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/flowRules/familyLink/subjectMatter/reference-flow-rules-edit-sml-header.jsp"/>
+	</definition> -->
+	
+	<definition name="sml-header" template="/WEB-INF/jsp/reference/flowRules/subjectMatter/sml-header.jsp">
+	</definition>
+	
+	<definition name="sml-destination-data" template="/WEB-INF/jsp/reference/flowRules/subjectMatter/sml-destination-data.jsp">
+	</definition>
+	
+	<definition name="sml-source-data" template="/WEB-INF/jsp/reference/flowRules/subjectMatter/sml-source-data.jsp">
+	</definition>
+	
+	<definition name="family-exception-data" template="/WEB-INF/jsp/reference/flowRules/familyLink/family-exception-data.jsp">
+	</definition>
+	
+	<!-- New Rule Subject Matter starts -->
+	<definition name="reference-new-rule-sub-matter-main" extends="reference.definition">
+		<put-attribute name="body" value="/WEB-INF/jsp/reference/flowRules/newrule/reference-new-rule-sub-matter-main.jsp"/>
+	</definition>
+	<!-- search by application list  -->
+    <definition name="new_rule_subject_matter_search_list" template="/WEB-INF/jsp/reference/flowRules/newrule/new_rule_subject_matter_search_list.jsp"/>
+
+    <definition name="new-rule-selected-family-data" template="/WEB-INF/jsp/reference/flowRules/newrule/new-rule-selected-family-data.jsp"/>
+	
+	
+</tiles-definitions>

@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="idsBuild" name="IDS Build Process" isExecutable="true">
+    <startEvent id="eStartIDS" name="Start"></startEvent>
+    <serviceTask id="stInitiateIDS" name="Initiate IDS" activiti:class="com.blackbox.ids.workflows.ids.task.InitiateIDS">
+      <documentation>Generates temp IDS Id, Stamps to Ref Flow entries.</documentation>
+      <extensionElements>
+        <activiti:field name="idsBuildService">
+          <activiti:expression><![CDATA[${idsBuildService}]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow1" sourceRef="eStartIDS" targetRef="stInitiateIDS"></sequenceFlow>
+    <userTask id="utBuildIDS" name="Build IDS">
+      <documentation>Actor - Paralegal. Include stamped reference flows. S/he fills in the IDS details. Review/Drop References etc. are part of it.</documentation>
+    </userTask>
+    <sequenceFlow id="flow2" sourceRef="stInitiateIDS" targetRef="utBuildIDS"></sequenceFlow>
+    <userTask id="utUploadDocs" name="Foreign / NPL Upload">
+      <documentation>Set the 'filingDecision' value.</documentation>
+    </userTask>
+    <serviceTask id="stGenerateFiles" name="Generate Files" activiti:async="true" activiti:class="com.blackbox.ids.workflows.ids.task.GenerateFilingPackage">
+      <extensionElements>
+        <activiti:field name="idsBuildService">
+          <activiti:expression><![CDATA[${idsBuildService}]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <exclusiveGateway id="exManualOrAuto" name="Exclusive Gateway">
+      <documentation>Governed by variable 'filingDecision'</documentation>
+    </exclusiveGateway>
+    <sequenceFlow id="flow9" name="File IDS" sourceRef="exclusivegateway2" targetRef="utUploadDocs">
+      <documentation>approved == true AND updated == false AND action == 'fileIDS'</documentation>
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${parallegalAction == 'FILE_IDS' && approved && !updated}]]></conditionExpression>
+    </sequenceFlow>
+    <userTask id="utUploadManually" name="Upload Manually"></userTask>
+    <sequenceFlow id="flow12" name="Manual Upload" sourceRef="exManualOrAuto" targetRef="utUploadManually">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${filingDecision == 'MANUAL'}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="exUploadStatus" name="Exclusive Gateway">
+      <documentation>Governed by variable 'uploadStatus'.</documentation>
+    </exclusiveGateway>
+    <serviceTask id="stUpdateFilingInfo" name="Update Internal Filing Info" activiti:class="com.blackbox.ids.workflows.ids.task.UpdateFilingInfo">
+      <documentation>Update IDS final Id, Filing Date and Cite Id on upload success.</documentation>
+    </serviceTask>
+    <sequenceFlow id="flow15" name="Success" sourceRef="exUploadStatus" targetRef="stUpdateFilingInfo">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${uploadStatus == 'SUCCESS'}]]></conditionExpression>
+    </sequenceFlow>
+    <endEvent id="eFinish" name="End"></endEvent>
+    <sequenceFlow id="flow18" sourceRef="utUploadManually" targetRef="eFinish"></sequenceFlow>
+    <manualTask id="mtUploadFiles" name="Upload to PTO (Asynch)">
+      <documentation>Must be completed in crawler after attempting the IDS upload on PTO.</documentation>
+    </manualTask>
+    <sequenceFlow id="flow25" name="Filing Decision" sourceRef="stGenerateFiles" targetRef="exManualOrAuto"></sequenceFlow>
+    <serviceTask id="stNotifyAttorney" name="Notify Attorney" activiti:class="com.blackbox.ids.workflows.ids.task.NotifyAttorney">
+      <documentation>Parallegal submits IDS to Attorney for approval. Generate notification and email for approval to Attorney.</documentation>
+      <extensionElements>
+        <activiti:field name="idsBuildService">
+          <activiti:expression><![CDATA[${idsBuildService}]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow29" sourceRef="stDiscardIDS" targetRef="eFinish">
+      <documentation>Attorney discarded this IDS.</documentation>
+    </sequenceFlow>
+    <sequenceFlow id="flow30" sourceRef="utUploadDocs" targetRef="stGenerateFiles">
+      <documentation>Submit == true</documentation>
+    </sequenceFlow>
+    <exclusiveGateway id="exAttorneyResponse" name="Exclusive Gateway">
+      <documentation>Governed by variable 'attorneyResponse'.</documentation>
+    </exclusiveGateway>
+    <sequenceFlow id="flow33" sourceRef="mtCloseNotification" targetRef="exAttorneyResponse">
+      <documentation>Continue flow based on the attorney response.</documentation>
+    </sequenceFlow>
+    <manualTask id="mtCloseNotification" name="Close Notification">
+      <documentation>The task will be closed as result of attorney response over the mail or notification. Should be completed manually.</documentation>
+      <extensionElements>
+        <activiti:executionListener event="end" class="com.blackbox.ids.workflows.ids.listener.CloseNotification"></activiti:executionListener>
+      </extensionElements>
+    </manualTask>
+    <sequenceFlow id="flow34" sourceRef="stNotifyAttorney" targetRef="mtCloseNotification"></sequenceFlow>
+    <serviceTask id="stDiscardIDS" name="Discard IDS" activiti:class="com.blackbox.ids.workflows.ids.task.DiscardIDS">
+      <extensionElements>
+        <activiti:field name="idsBuildService">
+          <activiti:expression><![CDATA[${idsBuildService}]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow35" name="Don't File IDS" sourceRef="exAttorneyResponse" targetRef="stDiscardIDS">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${attorneyResponse == 'DISCARD_IDS'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow36" name="Approve" sourceRef="exAttorneyResponse" targetRef="stApproveIDS">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${attorneyResponse == 'APPROVE'}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="exclusivegateway2" name="Exclusive Gateway">
+      <documentation>Must set the 'parallegalAction' variable prior to it.</documentation>
+    </exclusiveGateway>
+    <sequenceFlow id="flow37" sourceRef="utBuildIDS" targetRef="exclusivegateway2"></sequenceFlow>
+    <sequenceFlow id="flow38" name="Submit to Attorney" sourceRef="exclusivegateway2" targetRef="stNotifyAttorney">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${parallegalAction == 'SUBMIT_FOR_APPROVAL'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow39" name="Discard IDS" sourceRef="exclusivegateway2" targetRef="stDiscardIDS">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${parallegalAction == 'DISCARD_IDS'}]]></conditionExpression>
+    </sequenceFlow>
+    <serviceTask id="stUpdateUploadQueue" name="Update IDS Upload Queue" activiti:class="com.blackbox.ids.workflows.ids.task.InitiateIdsUpload">
+      <extensionElements>
+        <activiti:executionListener event="end" class="com.blackbox.ids.workflows.ids.listener.IdsUploadListener"></activiti:executionListener>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow40" name="Automatic" sourceRef="exManualOrAuto" targetRef="stUpdateUploadQueue">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${filingDecision == 'AUTOMATIC'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow41" sourceRef="stUpdateUploadQueue" targetRef="mtUploadFiles"></sequenceFlow>
+    <sequenceFlow id="flow42" name="Upload Status" sourceRef="mtUploadFiles" targetRef="exUploadStatus"></sequenceFlow>
+    <sequenceFlow id="flow43" name="Failure" sourceRef="exUploadStatus" targetRef="utUploadManually">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${uploadStatus == 'FAILED'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow44" sourceRef="stUpdateFilingInfo" targetRef="eFinish"></sequenceFlow>
+    <serviceTask id="stApproveIDS" name="Approve IDS" activiti:class="com.blackbox.ids.workflows.ids.task.ApproveIDS">
+      <extensionElements>
+        <activiti:field name="idsBuildService">
+          <activiti:expression><![CDATA[${idsBuildService}]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <serviceTask id="stRequestChanges" name="Request Changes" activiti:class="com.blackbox.ids.workflows.ids.task.UpdateIDS">
+      <extensionElements>
+        <activiti:field name="idsBuildService">
+          <activiti:expression><![CDATA[${idsBuildService}]]></activiti:expression>
+        </activiti:field>
+      </extensionElements>
+    </serviceTask>
+    <sequenceFlow id="flow45" name="Request Changes" sourceRef="exAttorneyResponse" targetRef="stRequestChanges">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${attorneyResponse == 'REQUEST_CHANGE'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow46" sourceRef="stRequestChanges" targetRef="utBuildIDS"></sequenceFlow>
+    <sequenceFlow id="flow47" sourceRef="stApproveIDS" targetRef="utBuildIDS"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_idsBuild">
+    <bpmndi:BPMNPlane bpmnElement="idsBuild" id="BPMNPlane_idsBuild">
+      <bpmndi:BPMNShape bpmnElement="eStartIDS" id="BPMNShape_eStartIDS">
+        <omgdc:Bounds height="35.0" width="35.0" x="43.0" y="277.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stInitiateIDS" id="BPMNShape_stInitiateIDS">
+        <omgdc:Bounds height="55.0" width="105.0" x="160.0" y="267.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="utBuildIDS" id="BPMNShape_utBuildIDS">
+        <omgdc:Bounds height="55.0" width="133.0" x="360.0" y="267.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="utUploadDocs" id="BPMNShape_utUploadDocs">
+        <omgdc:Bounds height="55.0" width="161.0" x="1117.0" y="267.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stGenerateFiles" id="BPMNShape_stGenerateFiles">
+        <omgdc:Bounds height="55.0" width="141.0" x="1127.0" y="390.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exManualOrAuto" id="BPMNShape_exManualOrAuto">
+        <omgdc:Bounds height="40.0" width="40.0" x="942.0" y="397.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="utUploadManually" id="BPMNShape_utUploadManually">
+        <omgdc:Bounds height="55.0" width="215.0" x="855.0" y="590.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exUploadStatus" id="BPMNShape_exUploadStatus">
+        <omgdc:Bounds height="40.0" width="40.0" x="420.0" y="505.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stUpdateFilingInfo" id="BPMNShape_stUpdateFilingInfo">
+        <omgdc:Bounds height="55.0" width="186.0" x="560.0" y="590.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="eFinish" id="BPMNShape_eFinish">
+        <omgdc:Bounds height="35.0" width="35.0" x="1371.0" y="600.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="mtUploadFiles" id="BPMNShape_mtUploadFiles">
+        <omgdc:Bounds height="55.0" width="201.0" x="340.0" y="390.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stNotifyAttorney" id="BPMNShape_stNotifyAttorney">
+        <omgdc:Bounds height="55.0" width="105.0" x="515.0" y="91.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exAttorneyResponse" id="BPMNShape_exAttorneyResponse">
+        <omgdc:Bounds height="40.0" width="40.0" x="972.0" y="98.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="mtCloseNotification" id="BPMNShape_mtCloseNotification">
+        <omgdc:Bounds height="55.0" width="158.0" x="720.0" y="91.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stDiscardIDS" id="BPMNShape_stDiscardIDS">
+        <omgdc:Bounds height="55.0" width="151.0" x="1127.0" y="91.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway2" id="BPMNShape_exclusivegateway2">
+        <omgdc:Bounds height="40.0" width="40.0" x="718.0" y="274.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stUpdateUploadQueue" id="BPMNShape_stUpdateUploadQueue">
+        <omgdc:Bounds height="55.0" width="210.0" x="634.0" y="390.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stApproveIDS" id="BPMNShape_stApproveIDS">
+        <omgdc:Bounds height="55.0" width="105.0" x="166.0" y="92.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="stRequestChanges" id="BPMNShape_stRequestChanges">
+        <omgdc:Bounds height="55.0" width="131.0" x="322.0" y="91.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="78.0" y="294.0"></omgdi:waypoint>
+        <omgdi:waypoint x="160.0" y="294.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="265.0" y="294.0"></omgdi:waypoint>
+        <omgdi:waypoint x="360.0" y="294.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="758.0" y="294.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1117.0" y="294.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="46.0" x="917.0" y="299.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow12" id="BPMNEdge_flow12">
+        <omgdi:waypoint x="962.0" y="437.0"></omgdi:waypoint>
+        <omgdi:waypoint x="962.0" y="590.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="86.0" x="972.0" y="504.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow15" id="BPMNEdge_flow15">
+        <omgdi:waypoint x="440.0" y="545.0"></omgdi:waypoint>
+        <omgdi:waypoint x="440.0" y="617.0"></omgdi:waypoint>
+        <omgdi:waypoint x="560.0" y="617.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="51.0" x="452.0" y="574.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow18" id="BPMNEdge_flow18">
+        <omgdi:waypoint x="1070.0" y="617.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1371.0" y="617.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow25" id="BPMNEdge_flow25">
+        <omgdi:waypoint x="1127.0" y="417.0"></omgdi:waypoint>
+        <omgdi:waypoint x="982.0" y="417.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="85.0" x="1021.0" y="429.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow29" id="BPMNEdge_flow29">
+        <omgdi:waypoint x="1278.0" y="118.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1388.0" y="118.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1388.0" y="600.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow30" id="BPMNEdge_flow30">
+        <omgdi:waypoint x="1197.0" y="322.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1197.0" y="390.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow33" id="BPMNEdge_flow33">
+        <omgdi:waypoint x="878.0" y="118.0"></omgdi:waypoint>
+        <omgdi:waypoint x="972.0" y="118.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow34" id="BPMNEdge_flow34">
+        <omgdi:waypoint x="620.0" y="118.0"></omgdi:waypoint>
+        <omgdi:waypoint x="720.0" y="118.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow35" id="BPMNEdge_flow35">
+        <omgdi:waypoint x="1012.0" y="118.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1127.0" y="118.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="79.0" x="1032.0" y="91.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow36" id="BPMNEdge_flow36">
+        <omgdi:waypoint x="992.0" y="98.0"></omgdi:waypoint>
+        <omgdi:waypoint x="991.0" y="29.0"></omgdi:waypoint>
+        <omgdi:waypoint x="646.0" y="29.0"></omgdi:waypoint>
+        <omgdi:waypoint x="426.0" y="29.0"></omgdi:waypoint>
+        <omgdi:waypoint x="218.0" y="29.0"></omgdi:waypoint>
+        <omgdi:waypoint x="218.0" y="92.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="46.0" x="260.0" y="11.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow37" id="BPMNEdge_flow37">
+        <omgdi:waypoint x="493.0" y="294.0"></omgdi:waypoint>
+        <omgdi:waypoint x="718.0" y="294.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow38" id="BPMNEdge_flow38">
+        <omgdi:waypoint x="738.0" y="274.0"></omgdi:waypoint>
+        <omgdi:waypoint x="737.0" y="222.0"></omgdi:waypoint>
+        <omgdi:waypoint x="567.0" y="222.0"></omgdi:waypoint>
+        <omgdi:waypoint x="567.0" y="146.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="48.0" width="100.0" x="604.0" y="185.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow39" id="BPMNEdge_flow39">
+        <omgdi:waypoint x="738.0" y="274.0"></omgdi:waypoint>
+        <omgdi:waypoint x="737.0" y="219.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1202.0" y="219.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1202.0" y="146.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="69.0" x="919.0" y="201.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow40" id="BPMNEdge_flow40">
+        <omgdi:waypoint x="942.0" y="417.0"></omgdi:waypoint>
+        <omgdi:waypoint x="844.0" y="417.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="59.0" x="872.0" y="390.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow41" id="BPMNEdge_flow41">
+        <omgdi:waypoint x="634.0" y="417.0"></omgdi:waypoint>
+        <omgdi:waypoint x="541.0" y="417.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow42" id="BPMNEdge_flow42">
+        <omgdi:waypoint x="440.0" y="445.0"></omgdi:waypoint>
+        <omgdi:waypoint x="440.0" y="505.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="82.0" x="452.0" y="469.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow43" id="BPMNEdge_flow43">
+        <omgdi:waypoint x="460.0" y="525.0"></omgdi:waypoint>
+        <omgdi:waypoint x="962.0" y="524.0"></omgdi:waypoint>
+        <omgdi:waypoint x="962.0" y="590.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="16.0" width="39.0" x="580.0" y="531.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow44" id="BPMNEdge_flow44">
+        <omgdi:waypoint x="653.0" y="645.0"></omgdi:waypoint>
+        <omgdi:waypoint x="652.0" y="713.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1388.0" y="713.0"></omgdi:waypoint>
+        <omgdi:waypoint x="1388.0" y="635.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow45" id="BPMNEdge_flow45">
+        <omgdi:waypoint x="992.0" y="98.0"></omgdi:waypoint>
+        <omgdi:waypoint x="991.0" y="69.0"></omgdi:waypoint>
+        <omgdi:waypoint x="387.0" y="69.0"></omgdi:waypoint>
+        <omgdi:waypoint x="387.0" y="91.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="48.0" width="100.0" x="339.0" y="45.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow46" id="BPMNEdge_flow46">
+        <omgdi:waypoint x="453.0" y="118.0"></omgdi:waypoint>
+        <omgdi:waypoint x="478.0" y="119.0"></omgdi:waypoint>
+        <omgdi:waypoint x="478.0" y="199.0"></omgdi:waypoint>
+        <omgdi:waypoint x="426.0" y="199.0"></omgdi:waypoint>
+        <omgdi:waypoint x="426.0" y="227.0"></omgdi:waypoint>
+        <omgdi:waypoint x="426.0" y="267.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow47" id="BPMNEdge_flow47">
+        <omgdi:waypoint x="218.0" y="147.0"></omgdi:waypoint>
+        <omgdi:waypoint x="218.0" y="201.0"></omgdi:waypoint>
+        <omgdi:waypoint x="426.0" y="201.0"></omgdi:waypoint>
+        <omgdi:waypoint x="426.0" y="267.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

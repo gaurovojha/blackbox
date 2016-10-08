@@ -1,0 +1,33 @@
+.columnFadeIn {
+    opacity: 0.2;
+}
+.btn1{
+    font-family: Raleway-Regular;
+    background: #9dace3;
+    font-size: 12px;
+    color: #2e3192;
+    display: inline-block;
+    padding:6px 12px;
+    text-decoration: none;
+    border-radius: 3px;
+}
+.editSmallTextBox {
+    background: #f5f5fa;
+    border: 1px #e6e6eb solid;
+    border-radius: 3px;
+    box-shadow: none;
+    height: 20px;
+    width: 26px;
+}
+.deletedElement {
+    display: none;
+}
+.nav-tabs.custom-tabs > li > a{
+    font-family: NotoSans-Regular;
+    font-size: 13px;
+    padding:11px 20px 9px;
+    color: #333;
+    /*change as per compare with dev server main.css color: #2e3192; background:#c2ccef;*/
+    border: none;
+}
+

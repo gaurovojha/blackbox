@@ -1,0 +1,6 @@
+Hi ,
+
+    ${body}
+
+Regards,
+${senderName}

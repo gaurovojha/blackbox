@@ -1,0 +1,264 @@
+.tab-actions p{margin-bottom: 0}
+.mtop20{margin-top: 20px!important}
+.mRight10{margin-right: 10px!important} 
+.border-right{border-right: 1px solid #000;}
+.orange{ color: #de3625; padding-left: 5px}
+
+.topinfo{ border:1px solid #ccc; margin-bottom: 10px}
+.topinfo ul{  padding: 0px 0;}
+.topinfo li{ display: inline-block;}
+.patentNav li.active a{background:#2e3192; color: #fff;}
+.patentNav li.active a .badge{background: #fff; color: #2e3192;}
+.patentNav li.disabled a .badge{opacity:0.4;}
+
+
+.infopanel{border-top: 1px solid #ccc;}
+.info-patent{ border-left: 1px solid #ccc;}
+.info-patent label{font-size: 13px; }
+.info-patent .form-control-static{ padding-top: 0; min-height: 20px; }
+.tab-info-text .btn.pull-right{margin-bottom: 10px;}
+.patent-heading{font-size: 22px; margin-bottom: 5px;}
+.tab-info-text h4{ font-size: 15px;}
+
+.ref-section-popup{ max-height: 500px; overflow: auto;  overflow-x:hidden;}
+.ref-section .list-group-item{overflow: hidden;}
+.ref-section .list-group-item .form-group{margin-bottom: 0}
+.ref-info{float: left; width: 97%; font-family: NotoSans-Regular;}
+
+
+.ref-section-popup .list-group-item{ overflow: hidden; border: none;}
+.bottom-note{font-size: 9px;}
+
+.certification-box{ background: #f5f5f5; padding:10px; border: 1px solid #e3e3e3; margin-bottom: 10px;}
+#patentsConfirm .modal-header .close{color: #000} 
+.uploadfile{position: absolute; right: 35px;}
+
+.notTopinfo{border-bottom: 1px solid #ccc; padding: 20px 0; margin-bottom: 20px;}
+.notification-box{margin-bottom: 10px; background: #fff; border:1px solid #e3e3e3;  padding: 10px; border-radius: 4px; min-height: 215px; position: relative;}
+.notification-box .footer{position: absolute; width: 100%; bottom: 10px; left: 10px; padding-right: 20px;}
+.notification-header{margin-bottom: 20px;}
+.notification-header span{ border-bottom: 3px #2e3192 solid; padding: 5px;}
+.carousel.slide{ height:480px;}
+.carousel-indicators li{border:1px #ccc solid;}
+.carousel-indicators .active{background: #ccc;}
+.carousel-indicators{ bottom: 0;}
+.notification-box .btn{min-width:auto;}
+.remove{color: #2e3192; float: right; font-size: 24px; font-weight: 700; line-height: 10px; }
+.leftcontent{ float: left; width: 49%;}
+.more-notification{display: none; position: absolute; background: #f1f1f1; left: 0; right: 0; margin: 0 auto; top: 0;
+box-shadow: inset 0 0 20px #ccc; padding:0 20px; box-sizing:border-box; width: 100%;}
+.more-notification p{padding:10px; margin: 0;}
+.more-notification a.show-less{position: absolute; right: 15px; bottom: 20px;}
+/*--by santosh for trifolder--*/
+.tri-heading{ background: #2e3192; color:#fff;border-radius: 4px 4px 0 0; font-size: 22px; margin: 0;padding: 10px;}
+
+.triNav { border: 1px solid #ccc; background: #fff;}
+.triNav a { border-top: 1px solid #ccc; }
+.triNav a.active{background: #e3e4eb;}
+.trisearch{margin-bottom: 10px; background: #fff;}
+
+.triNav ul{ margin: 0; padding: 0; background: #fff; list-style: none;}
+.triNav ul li a{display: block; padding: 10px 5px  10px 25px; position: relative;   color: #000}
+.triNav a.collapsed .triNav ul li a:hover{ background: #f1f1f1;}
+
+.pager-number{ margin-bottom: 15px; }
+.paging { float: left; background: url(../images/paging-bg.png) repeat-x 0 15px;}
+.paging a{ background:#2e3192;  border-radius: 15px; color: #fff; display: inline-block; font-size: 16px; font-weight: 700;line-height: 1;
+    min-width: 10px;  padding: 6px 10px;  text-align: center; vertical-align: middle;  white-space: nowrap;  margin-right: 40px; box-shadow:0px 0px 4px #ccc; }
+.paging a.active{ background: #fff; border:1px solid #ccc; color: #2e3192}
+.paging a:last-child{ margin-right: 0}
+
+.clickable tr{ cursor: pointer;}
+
+.document-reader {border: 1px solid #b8b6b6;position: relative; padding-bottom: 10px;}
+.triangle-corner {background: url("../images/triangle.png") no-repeat 0 0;position: absolute;right: -1px;top: -1px;height: 81px;width: 88px;}
+.document-reader h3 {    padding: 10px 0 0 15px;margin:0 0 10px;}
+.form-horizontal.odd{ background: #f5f5f5;}
+
+.borderTB {
+    border-top: 1px solid #d8dceb;
+    border-bottom: 1px solid #d8dceb;
+}
+
+
+.document-reader .title {
+    font-size:18px;
+    font-weight: 700;
+    padding: 10px 0 0 15px;
+    margin-bottom: 0;
+} 
+.document-reader .heading {
+    margin: 10px 0 0;
+    background-color: #666666;
+    color: #FFF;
+    font-size: 14px;
+    padding: 5px 15px;
+    font-weight: bold;
+}
+
+.mTop10{
+    margin-top: 10px;
+} 
+/*--by devender----*/
+.patentNav li.active a{background: #35B880;}
+.patentNav li.active a .badge {
+    background: #fff;
+    color: #35B880;
+}
+.patentNav li a{
+	padding: 6px 15px;
+}
+.infopanel{
+	margin-bottom: 10px;
+}
+.infopanel h3{
+	font-size: 20px;
+	font-family: Raleway-Bold;
+}
+.wizard-steps{ background: #f5f5f5; margin-bottom: 1px;}
+.wizard-steps li{display: inline-block;}
+.info-patent{padding: 10px 10px 10px 0;}
+.custom-table > thead > tr > th.highlighted-col{background: #7F8DBF;}
+.legend-txt{ font-family: NotoSans-Regular; padding: 4px 15px;
+    font-size: 12px;
+    color: #333;}
+
+ .form-horizontal label.current-status, .form-horizontal label.examin-status{
+ 	font-family: Raleway-Bold;
+ 	font-size: 14px;
+ 	font-weight: bold;
+ 	color: green;
+ }
+ .form-horizontal label.examin-status{
+ 	color: #2F6BBD;
+ }
+ .pagination-control{
+ 	margin-top: 15px !important;
+ }
+ .tab-actions .datepicker.single{
+ 	width: auto;
+
+ }
+ .tab-actions  .datepicker.single input.form-control{
+ 	background: #f5f5fa;
+    border: 1px #e6e6eb solid;
+    border-radius: 3px 0 0 3px;
+    box-shadow: none;
+    height: 38px;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+ .tab-actions .input-group.date .input-group-addon {
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    color: #555;
+    text-align: center;
+    background-color: #eee;
+    border: 1px solid #e6e6eb;
+    border-left: none;
+    border-radius: 0 3px 3px 0;
+}
+.document-reader .form-control-static, .document-reader-duplicate .form-control-static{
+    padding-top: 0;
+    min-height: auto;
+}
+.document-reader .divider{
+    margin: 0;
+}
+.scrollDiv{
+    position: relative;
+}
+
+.scrollDiv:before{
+    content: "";
+    width: 10px;
+    border-radius: 5px;
+    height: 95px;
+    background: #ccc;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.trifolder-cited{
+    width: 46.66%;
+}
+.trifolder-source{
+    width: 36.66%;
+}
+.new-notify {
+    margin-left: 40px;
+    font-size: 12px;
+}
+.document-reader-duplicate {border: 1px solid #b8b6b6;position: relative; padding-bottom: 0px; margin-top:10px; }
+.document-reader-duplicate .heading{margin: 0px 0 0; background-color: #666666;  color: #FFF;  font-size: 14px; padding: 5px 15px;
+    font-weight: bold;}
+.infopanel .view-ref-btn{
+     float: right;
+    margin-right: 10px;
+    margin-top: 25px;
+    float: right;
+    margin-right: 15px;
+    margin-top: 30px;
+}
+.document-reader-duplicate .content{
+    height: 208px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.document-reader-duplicate .mCSB_inside > .mCSB_container{
+    margin-right: 0;
+}
+.document-reader-duplicate .content .form-group{
+    margin: 0;
+    padding-bottom: 7px;
+}
+.document-reader-duplicate .content .form-group:nth-child(even){
+    background: #f5f5f5;
+}
+#reference-search-control{
+    width: 540px;
+    border-radius: 0;
+}
+#reference-search-control ul {
+    padding:10px 5px 0;
+    border-radius: 0;
+    border:none;
+}
+#reference-search-control li{
+    width: 33.33%;
+}
+#reference-search-control li{
+    border-right:none;
+    min-width: auto;
+    margin-bottom: 0;
+}
+#reference-search-control li:hover{
+    background: #fff;
+}
+#reference-search-control li a{
+        padding: 11px 10px 9px;
+        border-radius: 0;
+        margin-right: 0;
+        border:1px #A2B4F6 solid;
+        border-right:none;
+        display: block;
+}
+#reference-search-control li:last-child a{
+    border-right:1px #A2B4F6 solid;
+}
+#reference-search-control .tab-content{
+    padding-top: 10px;
+}
+#reference-search-control .search-footer{
+background: #f6f6f6;
+    padding: 10px;
+}
+.div-drilldown-page-header{
+	margin-left:185px;
+	margin-right: 50px;
+	margin-top: 50px;
+	width:80%
+}

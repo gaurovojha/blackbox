@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="create.application.queue.fetch">
+		SELECT ID, APPLICATION_NUMBER_FORMATTED, CUSTOMER_NUMBER, 
+		JURISDICTION_CODE, FILING_DATE, CORRESPONDENCE_LINK, RETRY_COUNT, BASE_APPLICATION_QUEUE_ID, 
+		APPLICATION_NUMBER_RAW 
+  		FROM BB_SCR_CREATE_APPLICATION   
+  		WHERE STATUS = 'INITIATED' 
+  			AND (LOWER(JURISDICTION_CODE) = LOWER('US')  
+  			OR (LOWER(JURISDICTION_CODE) = LOWER('WO') AND APPLICATION_NUMBER_FORMATTED LIKE 'PCT/US%'))
+  		ORDER BY CUSTOMER_NUMBER
+	</entry>
+	
+	<entry key="create.application.queue.fetch.by.id">
+		SELECT ID, APPLICATION_NUMBER_FORMATTED, CUSTOMER_NUMBER, 
+		JURISDICTION_CODE, FILING_DATE, CORRESPONDENCE_LINK, RETRY_COUNT, BASE_APPLICATION_QUEUE_ID, 
+		APPLICATION_NUMBER_RAW 
+  		FROM BB_SCR_CREATE_APPLICATION   
+  		WHERE ID = :id
+	</entry>
+	
+	<entry key="create.application.queue.fetch.by.application">
+		SELECT count(ID) FROM BB_SCR_CREATE_APPLICATION   
+  		WHERE APPLICATION_NUMBER_FORMATTED = :applicationNumber 
+  		AND LOWER(JURISDICTION_CODE) = LOWER(:jurisdiction)
+  		AND STATUS NOT LIKE '%ERROR%' 
+  		AND STATUS != 'REJECTED' 
+  		AND (:baseCaseId IS NULL OR BASE_APPLICATION_QUEUE_ID=:baseCaseId);
+	</entry>
+		
+	<entry key="create.application.queue.update">
+		UPDATE BB_SCR_CREATE_APPLICATION 
+		SET RETRY_COUNT = :retryCount, STATUS = :status,
+		MODIFIED_BY=:systemUser, MODIFIED_ON=GETDATE() 
+		WHERE ID = :id
+	</entry>
+	
+	<entry key="create.application.queue.family.update">
+		UPDATE BB_SCR_CREATE_APPLICATION 
+		SET STATUS = :status,
+		MODIFIED_BY=:systemUser, MODIFIED_ON=GETDATE() 
+		WHERE (BASE_APPLICATION_QUEUE_ID = :baseCaseId 
+		OR ID = :baseCaseId)
+	</entry>
+	
+	<entry key="create.application.queue.insert">
+		INSERT INTO BB_SCR_CREATE_APPLICATION
+	           (APPLICATION_NUMBER_FORMATTED,
+	           APPLICATION_NUMBER_RAW,
+	           CREATED_BY,CREATED_ON,MODIFIED_BY,MODIFIED_ON,
+	           CUSTOMER_NUMBER,JURISDICTION_CODE,BASE_APPLICATION_QUEUE_ID,
+	           FAMILY_ID,FILING_DATE,RETRY_COUNT,STATUS)
+	     VALUES
+	           (:applicationNumber,:applicationNumberRaw,
+			   :systemUser,GETDATE(),:systemUser,GETDATE(),
+			   :customer,:jurisdiction,:baseApplicationQueueId,
+	           :familyId,:filingDate,:retryCount,:status)
+	</entry>
+	
+	<entry key="find.parent.queue.family.update">
+		UPDATE BB_SCR_FIND_FAMILY 
+		SET STATUS = :status, FAMILY_ID = :familyId, 
+		RETRY_COUNT = RETRY_COUNT + 1,
+		MODIFIED_BY=:systemUser, MODIFIED_ON=GETDATE()  
+		WHERE BASE_APPLICATION_QUEUE_ID = :baseCaseId 
+		AND STATUS = 'INITIATED' AND Family_TYPE = 'PARENT'
+	</entry>
+		
+	<entry key="find.family.queue.insert">
+		INSERT INTO BB_SCR_FIND_FAMILY
+           (APPLICATION_NUMBER_FORMATTED,APPLICATION_NUMBER_RAW,
+           CUSTOMER_NUMBER,JURISDICTION_CODE,
+			FILING_DATE,STATUS,Family_TYPE,
+			CREATED_BY,CREATED_ON,MODIFIED_BY,MODIFIED_ON,FAMILY_ID, RETRY_COUNT,
+			APPLICATION_STAGE_ID, BASE_APPLICATION_QUEUE_ID)
+     	VALUES
+           (:applicationNumber,:applicationNumberRaw,
+           :customer,:jurisdiction,
+           :filingDate,:status,:familyType,
+           :systemUser,:currentDate,:systemUser,:currentDate,:familyId, 0,
+           :applicationStageId, :baseCaseId)
+	</entry>
+	
+	<entry key="find.family.fetch">
+		SELECT ID,APPLICATION_NUMBER_FORMATTED,CUSTOMER_NUMBER ,JURISDICTION_CODE ,FILING_DATE,FAMILY_ID,RETRY_COUNT,BASE_APPLICATION_QUEUE_ID,
+		APPLICATION_NUMBER_RAW 
+  		FROM BB_SCR_FIND_FAMILY 
+  		WHERE Family_TYPE=:familyType AND STATUS = 'INITIATED'
+  		AND (JURISDICTION_CODE = 'US'  
+  			OR (JURISDICTION_CODE = 'WO' AND APPLICATION_NUMBER_FORMATTED LIKE 'PCT/US%')) 
+  		ORDER BY CUSTOMER_NUMBER
+	</entry>
+	
+	<entry key="find.parent.fetch.by.applicationStage">
+		SELECT ID FROM BB_SCR_FIND_FAMILY WHERE APPLICATION_STAGE_ID = :applicationStageId
+	</entry>
+	
+	<entry key="find.family.queue.status.update">
+		UPDATE BB_SCR_FIND_FAMILY SET STATUS = :status, RETRY_COUNT=RETRY_COUNT + 1,
+		MODIFIED_BY=:systemUser, MODIFIED_ON=GETDATE() WHERE ID in (:ids)
+	</entry>
+	
+	<entry key="inclusionlist.application.fetch">
+		SELECT count(ID)
+  		FROM BB_INCLUSION_LIST 
+  		WHERE APPLICATION_NUMBER=:applicationNumber 
+  		AND JURISDICTION=:jurisdiction 
+  		AND STATUS=:activeStatus 
+	</entry>
+	
+	<entry key="inclusionlist.application.update">
+  		UPDATE BB_INCLUSION_LIST 
+  		SET STATUS=:activeStatus, MODIFIED_BY=:modifiedBy, MODIFIED_ON=GETDATE()
+  		WHERE APPLICATION_NUMBER=:applicationNumber 
+  		AND JURISDICTION=:jurisdiction 
+  		AND STATUS = :inactiveStatus
+	</entry>
+	
+	<entry key="inclusionlist.application.insert">
+		INSERT INTO BB_INCLUSION_LIST 
+			(MODIFIED_BY, MODIFIED_ON,CREATED_BY, CREATED_ON, 
+			APPLICATION_NUMBER, APPLICATION_NUMBER_RAW, 
+			CUSTOMER_NUMBER, JURISDICTION, STATUS)
+  		VALUES 
+  			(:systemUser,GETDATE(),:systemUser,GETDATE(),
+  			:applicationNumber, :applicationNumberRaw, 
+  			:customerNumber, :jurisdiction, :status)		
+	</entry>
+	
+	<entry key="exclusionlist.application.fetch">
+		SELECT count(ID) 
+  		FROM BB_EXCLUSION_LIST 
+  		WHERE APPLICATION_NUMBER=:applicationNumber 
+  		AND JURISDICTION=:jurisdiction 
+  		AND STATUS='ACTIVE'	
+	</entry>
+	
+	<entry key="download.office.action.queue.insert">
+		INSERT INTO BB_SCR_DOWNLOAD_OFFICE_ACTION
+           (APPLICATION_NUMBER_FORMATTED,APPLICATION_NUMBER_RAW,
+           CUSTOMER_NUMBER,JURISDICTION_CODE,DOCUMENT_CODE,
+           RETRY_COUNT,STATUS,FILING_DATE,
+           CREATED_BY,CREATED_ON,MODIFIED_BY,MODIFIED_ON)
+     	VALUES
+           (:applicationNumber,:applicationNumberRaw,
+           :customer,:jurisdiction,:correspondenceCode,
+           :retryCount, :status,:filingDate,
+           :systemUser,GETDATE(),:systemUser,GETDATE())
+	</entry>
+	
+	<entry key="application.stage.insert">
+		INSERT INTO BB_APPLICATION_STAGE
+           (MODIFIED_BY, MODIFIED_ON, CREATED_BY, CREATED_ON,
+            APPLICATION_NUMBER_RAW, CHILD_APPLICATION_TYPE, CONFIRMATION_NUMBER,
+            FILING_DATE, APPLICATION_NUMBER, FAMILY_ID, ENTITY,
+            EXPORT_CONTROL, PROSECUTION_STATUS, ART_UNIT,
+            EXAMINER, FIRST_NAME_INVENTOR, ISSUED_ON,
+            PATENT_NUMBER_RAW,PATENT_NUMBER, TITLE, PUBLICATION_NUMBER, PUBLICATION_NUMBER_RAW,
+            PUBLISHED_ON, SOURCE,SUB_SOURCE, BB_ASSIGNEE, BB_ATTORNEY_DOCKET,
+            BB_CUSTOMER, BB_JURISDICTION, BB_ORGANIZATION,STATUS)
+     	VALUES
+           (:systemUser,GETDATE(),:systemUser,GETDATE(),
+           :applicationNumberRaw,:childApplicationType,:confirmationNumber,
+           :filingDate,:applicationNumber,:familyId,:entity,
+           :exportControl,:prosecutionStatus,:artUnit,
+           :examiner,:firstNameInventor,:issuedOn,
+		   :patentNumberRaw,:patentNumber,:title,:publicationNumber,:publicationNumberRaw,
+		   :publishedOn,:source,:subSource,:assignee,:attorneyDocket,
+		   :customer,:jurisdiction,:organization,:status)		
+	</entry>
+	
+	<entry key="find.jurisdiction.by.country">
+		SELECT CODE FROM BB_MSTR_JURISDICTION WHERE UPPER(DESCRIPTION) = UPPER(:country)
+	</entry>
+	
+	<entry key="webcrawler.mark.status.deleted">
+		UPDATE BB_CORRESPONDENCE_STAGING SET STATUS = 'DELETED' WHERE BB_CORRESPONDENCE_STAGING_ID IN 
+           (select BB_CORRESPONDENCE_STAGING_ID
+
+		   from (select * from BB_CORRESPONDENCE where SOURCE = 'Automatic') base 
+		   inner join 
+		   (select * from BB_CORRESPONDENCE_STAGING where SOURCE = 'Automatic') staging
+		   on 
+		    base.source = staging.source
+		   and  base.BB_JURISDICTION_ID = staging.BB_JURISDICTION_ID
+		   and  base.MAILING_DATE = staging.MAILING_DATE
+		   and  base.PRIVATE_PAIR_UPLOAD_DATE = staging.PRIVATE_PAIR_UPLOAD_DATE
+
+		   inner join BB_DOCUMENT_CODE document
+		   on
+		   base.BB_DOCUMENT_CODE_ID = document.BB_DOCUMENT_CODE_ID
+		   
+		   inner join BB_CORRESPONDENCE_ATTACHMENT attachment
+		   on base.BB_CORRESPONDENCE_ATTACHMENT_ID = attachment.BB_CORRESPONDENCE_ATTACHMENT_ID
+		   
+		   where document.DOCUMENT_CODE = staging.DOCUMENT_CODE
+		   and attachment.ATTACHMENT_PAGE_COUNT = staging.DOCUMENT_PAGE_COUNT
+		   and attachment.ATTACHMENT_SIZE = staging.ATTACHMENT_SIZE)
+	</entry>
+	
+	<entry key="create.application.queue.aplicationnumbers.fetch">
+		SELECT ID, APPLICATION_NUMBER_RAW, APPLICATION_NUMBER_FORMATTED, CUSTOMER_NUMBER, 
+		JURISDICTION_CODE, FILING_DATE, CORRESPONDENCE_LINK, RETRY_COUNT, MODIFIED_ON 
+  		FROM BB_SCR_CREATE_APPLICATION   
+  		WHERE CUSTOMER_NUMBER IN (:customerNos)
+  		ORDER BY CUSTOMER_NUMBER
+	</entry>
+</properties>

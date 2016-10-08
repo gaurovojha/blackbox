@@ -1,0 +1,30 @@
+USE [blackbox]
+GO
+ALTER TABLE [dbo].[BB_VALID_FORMAT] DROP CONSTRAINT [FK_7e37ouivf9uhbpsmmbfusgnhj]
+GO
+ALTER TABLE [dbo].[BB_APPLICATION_BASE] DROP CONSTRAINT [FK_rvcmgrd38bs1va6exn18ea2j6]
+GO
+ALTER TABLE [dbo].[BB_APPLICATION_BASE] DROP CONSTRAINT [FK_hp6ukcm5blo6vcmu1a3nbjcka]
+GO
+ALTER TABLE [dbo].[BB_APPLICATION_BASE] DROP CONSTRAINT [FK_fshacam0ln11ifhm0j0g1qfix]
+GO
+ALTER TABLE [dbo].[BB_APPLICATION_BASE] DROP CONSTRAINT [FK_c5tel7bqr8dyqvwqoqkjaml4s]
+GO
+ALTER TABLE [dbo].[BB_APPLICATION_BASE] DROP CONSTRAINT [FK_axcjjwrfv7kityvhegeit2spb]
+GO
+ALTER TABLE [dbo].[BB_APPLICATION_BASE] DROP CONSTRAINT [FK_8dy64l22omlmkwstf2dw318j4]
+GO
+/****** Object:  Table [dbo].[BB_VALIDATION_MATRIX]    Script Date: 30-12-2015 14:39:56 ******/
+DROP TABLE [dbo].[BB_VALIDATION_MATRIX]
+GO
+/****** Object:  Table [dbo].[BB_VALID_FORMAT]    Script Date: 30-12-2015 14:39:56 ******/
+DROP TABLE [dbo].[BB_VALID_FORMAT]
+GO
+/****** Object:  Table [dbo].[BB_APPLICATION_STAGE]    Script Date: 30-12-2015 14:39:56 ******/
+DROP TABLE [dbo].[BB_APPLICATION_STAGE]
+GO
+/****** Object:  Table [dbo].[BB_APPLICATION_BASE]    Script Date: 30-12-2015 14:39:56 ******/
+DROP TABLE [dbo].[BB_APPLICATION_BASE]
+GO
+DROP TABLE [dbo].[BB_ENTITY_USER]
+GO

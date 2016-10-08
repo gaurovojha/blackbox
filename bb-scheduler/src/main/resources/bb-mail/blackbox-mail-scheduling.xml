@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+       <context:annotation-config/>
+       
+       <bean id="mailSchedulerConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="placeholderPrefix" value="$mail{" />
+		<property name="placeholderSuffix" value="}" />
+		<property name="locations"
+			value="classpath:/bb-mail/mail.properties">
+		</property>
+	</bean>
+	
+	<bean id="emailSender" name="emailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="$mail{mail.host}" />
+		<property name="port" value="$mail{mail.port}" />
+		<property name="username" value="$mail{mail.username}" />
+		<property name="password" value="$mail{mail.password}" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">$mail{mail.authentication}</prop>
+				<prop key="mail.smtp.starttls.enable">$mail{mail.tls_enabled}</prop>
+				<prop key="mail.smtp.ssl.enable">$mail{mail.ssl_enabled}</prop>	
+				<prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>			
+				<prop key="mail.smtp.socketFactory.fallback">false</prop> 
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="mailScheduler" class="com.blackbox.ids.scheduler.email.EmailScheduler" >
+	<constructor-arg name="schedulerConfig">
+			<bean class="com.blackbox.ids.scheduler.email.config.SchedulerConfig">
+				<property name="schedulerEntities">
+					<util:list>
+						<bean class="com.blackbox.ids.scheduler.email.config.SchedulerEntity">
+							<property name="scheduleInterval" value="$mail{mail.highpriority.schedulerInterval}" />
+							<property name="poolSize" value="$mail{mail.highpriority.poolSize}" />
+							<property name="priority" value="MAX" />
+							<property name="runnable" value="true" />
+							<property name="messageConfig">
+								<util:map>
+									<entry key="OTP">
+										<bean class="com.blackbox.ids.scheduler.email.handler.OTPHandler">
+											<constructor-arg name="templateType" value="OTP" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+									<entry key="FORGOT_PASSWORD">
+										<bean class="com.blackbox.ids.scheduler.email.handler.ForgotPasswordHandler">
+											<constructor-arg name="templateType" value="FORGOT_PASSWORD" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+									<entry key="ACCOUNT_LOCKED">
+										<bean class="com.blackbox.ids.scheduler.email.handler.AccountLockedHandler">
+											<constructor-arg name="templateType" value="ACCOUNT_LOCKED" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+									<entry key="PAIR_AUDIT_REPORT">
+										<bean class="com.blackbox.ids.scheduler.email.handler.PAIRAuditReportHandler">
+											<constructor-arg name="templateType" value="PAIR_AUDIT_REPORT" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+									<entry key="CORRUPTED_AUDIT_FILE">
+										<bean class="com.blackbox.ids.scheduler.email.handler.CorruptedAuditFileHandler">
+											<constructor-arg name="templateType" value="CORRUPTED_AUDIT_FILE" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+									<entry key="CRAWLER_NOTIFICATION">
+										<bean class="com.blackbox.ids.scheduler.email.handler.CorruptedAuditFileHandler">
+											<constructor-arg name="templateType" value="CRAWLER_NOTIFICATION" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+									<entry key="CRAWLER_AUTHENTICATION">
+										<bean class="com.blackbox.ids.scheduler.email.handler.CrawlerNotificationHandler">
+											<constructor-arg name="templateType" value="CRAWLER_AUTHENTICATION" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+									<entry key="URGENT_IDS_REPORT">
+										<bean class="com.blackbox.ids.scheduler.email.handler.UrgentIDSReportHandler">
+											<constructor-arg name="templateType" value="URGENT_IDS_REPORT" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+									<entry key="NEW_REF_UPDATE">
+										<bean class="com.blackbox.ids.scheduler.email.handler.NewRefUpdateHandler">
+											<constructor-arg name="templateType" value="NEW_REF_UPDATE" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+								</util:map>
+							</property>
+						</bean>
+
+						<bean class="com.blackbox.ids.scheduler.email.config.SchedulerEntity">
+							<property name="scheduleInterval" value="$mail{mail.normalpriority.schedulerInterval}" />
+							<property name="poolSize" value="$mail{mail.normalpriority.poolSize}" />
+							<property name="priority" value="MAX" />
+							<property name="runnable" value="true" />
+							<property name="messageConfig">
+								<util:map>
+									<entry key="BULK_FILE_ERROR">
+										<bean class="com.blackbox.ids.scheduler.email.handler.BulkUploadFileErrorHandler">
+											<constructor-arg name="templateType" value="BULK_FILE_ERROR" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+								</util:map>
+							</property>
+						</bean>
+						
+						<bean class="com.blackbox.ids.scheduler.email.config.SchedulerEntity">
+							<property name="scheduleInterval" value="$mail{mail.normalpriority.schedulerInterval}" />
+							<property name="poolSize" value="$mail{mail.normalpriority.poolSize}" />
+							<property name="priority" value="MAX" />
+							<property name="runnable" value="true" />
+							<property name="messageConfig">
+								<util:map>
+									<entry key="NOTIFICATION_EMAIL">
+										<bean class="com.blackbox.ids.scheduler.email.handler.NotificationEmailHandler">
+											<constructor-arg name="templateType" value="NOTIFICATION_EMAIL" />
+											<property name="emailSender" ref="emailSender" />
+										</bean>
+									</entry>
+								</util:map>
+							</property>
+						</bean>
+					</util:list>
+				</property>
+			</bean>
+		</constructor-arg>
+		</bean>
+       
+       <!-- <context:component-scan base-package="com.blackbox.ids.common.notifier" /> -->
+
+</beans>

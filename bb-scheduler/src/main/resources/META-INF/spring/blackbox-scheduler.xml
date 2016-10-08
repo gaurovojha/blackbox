@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.blackbox.ids.scheduler" />
+
+	<import resource="classpath:META-INF/spring/blackbox-services.xml" />
+	<import resource="classpath:META-INF/spring/blackbox-uspto-scrapper.xml" />
+	<import resource="classpath:bb-mail/blackbox-mail-scheduling.xml" />
+
+	<!-- Create Application Job beans -->
+	<bean id="createApplicationJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.CreateApplicationJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="createApplicationTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="createApplicationJobDetail" />
+		<!-- "create Application web crawler job - runs once in every 48 hours -->
+		<property name="cronExpression" value="${cron.expression.crawler.create.application}" />
+	</bean>
+
+	<!-- Track Application Family Job beans -->
+	<bean id="trackFamilyJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.TrackApplicationFamilyJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="trackFamilyTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="trackFamilyJobDetail" />
+		<!-- "Track family web crawler job - runs once in every 48 hours -->
+		<property name="cronExpression" value="${cron.expression.crawler.track.family}" />
+	</bean>
+
+	<!-- Outgoing Correspondence Web Crawler Configurations -->
+	<bean id="outgoingCorrespondenceCrawlerTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="outgoingCorrespondenceJobDetail" />
+		<property name="cronExpression" value="${cron.expression.crawler.outgoingcorrespondence}" />
+	</bean>
+
+	<bean id="outgoingCorrespondenceJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.OutgoingCorrespondenceJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<!-- IFW Doc Download Web Crawler Configurations -->
+	<bean id="ifwDocDownloadCrawlerTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="ifwDocDownloadJobDetail" />
+		<property name="cronExpression" value="${cron.expression.crawler.ifwdownloadDoc}" />
+	</bean>
+
+	<bean id="ifwDocDownloadJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.IFWDocDownloadJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<!-- Private Pair Audit Web Crawler Configurations -->
+	<bean id="privatePairAuditCrawlerTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="privatePairAuditCrawlerJobDetail" />
+		<property name="cronExpression" value="${cron.expression.crawler.privatepairaudit}" />
+	</bean>
+
+	<bean id="privatePairAuditCrawlerJobDetail"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.WebCrawlerPrivatePairAuditJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<!-- epOfficeActionServiceJob Job beans -->
+	<bean id="epOfficeActionServiceJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.EPOfficeActionServiceJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="epOfficeActionServiceJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="epOfficeActionServiceJob" />
+		<!-- <property name="cronExpression" value="0 */2 * * * ?" /> -->
+		<!-- "create Application web crawler job - runs once in every 30 min -->
+		<property name="cronExpression" value="${cron.expression.crawler.epOfficeAction}" />
+	</bean>
+
+
+	<!-- ApplicationValidationJob Job -->
+	<bean id="applicationValidationJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.ApplicationValidationJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="applicationValidationJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="applicationValidationJob" />
+		<!-- <property name="cronExpression" value="0 */2 * * * ?" /> -->
+		<!-- "create Application web crawler job - runs once in every 30 min -->
+		<property name="cronExpression" value="${cron.expression.crawler.applicationValidation}" />
+	</bean>
+	
+	<!-- ApplicationListValidationJob Job -->
+	
+	<bean id="applicationListValidationJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.ApplicationListValidationJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="applicationListValidationJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="applicationListValidationJob" />
+		<property name="cronExpression" value="${cron.expression.application.list.validation}" />
+		<!-- <property name="cronExpression" value="0 0/5 * * * ?" /> -->
+		<!-- "create Application web crawler job - runs once in a week ie., Friday -->
+		<!-- <property name="cronExpression" value="0 0 * * FRI" /> -->
+	</bean>
+	
+	<!-- N417 Treatment Job -->
+	<bean id="n417TreatmentQueueImportJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.ids.N417TreatmentQueueDataImportJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="n417TreatmentQueueImportJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="n417TreatmentQueueImportJob" />
+		<property name="cronExpression" value="${cron.expression.crawler.n417Treatment.queue.import}" />
+	</bean>
+	
+	<bean id="n417TreatmentJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.N417TreatmentJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="n417TreatmentJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="n417TreatmentJob" />
+		<property name="cronExpression" value="${cron.expression.crawler.n417Treatment}" />
+	</bean>
+	
+	<!-- IDS filing tracking Job -->
+	<bean id="trackIDSFilingJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.webcrawler.TrackIDSFilingJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="trackIDSFilingJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="trackIDSFilingJob" />
+		<property name="cronExpression" value="${cron.expression.crawler.ids.tracking}" />
+	</bean>
+	
+	<!-- MDM data import Job -->
+	<bean id="mdmDataImportJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.mdm.MDMDataImportJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="mdmDataImportJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="mdmDataImportJob" />
+		<property name="cronExpression" value="${cron.expression.mdm.data.import}" />
+	</bean>
+
+<!-- End of Web Crawler Configurations -->
+
+	<!-- ApplicationValidationJob Job -->
+	<bean id="ePOActionDataImportJob"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass"
+			value="com.blackbox.ids.scheduler.mdm.EPOActionDataImportJob" />
+		<property name="durability" value="true" />
+	</bean>
+
+	<bean id="ePOActionDataImportJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="ePOActionDataImportJob" />
+		<property name="cronExpression" value="${cron.expression.crawler.epOfficeActionDataImport}" />
+	</bean>
+
+
+
+	<!-- End of Web Crawler Configurations -->
+
+	<!-- Quartz Scheduler -->
+	<bean id="quartzScheduler" name="quartzScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="applicationContextSchedulerContextKey" value="applicationContext" />
+		<property name="jobFactory">
+			<bean class="com.blackbox.ids.scheduler.AutowiringSpringBeanJobFactory" />
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="createApplicationTrigger" />
+				<ref bean="trackFamilyTrigger" />
+				<ref bean="outgoingCorrespondenceCrawlerTrigger" />
+				<ref bean="ifwDocDownloadCrawlerTrigger" />
+				<ref bean="privatePairAuditCrawlerTrigger" />
+				<ref bean="epOfficeActionServiceJobTrigger" />
+				<ref bean="applicationValidationJobTrigger" />
+				<ref bean="ePOActionDataImportJobTrigger" />
+				<ref bean="applicationListValidationJobTrigger" />
+				<ref bean="ocrDataSchedulerCronTrigger" />
+				<ref bean="n417TreatmentQueueImportJobTrigger"/>
+				<ref bean="n417TreatmentJobTrigger"/>
+				<ref bean="trackIDSFilingJobTrigger"/>
+				<ref bean="mdmDataImportJobTrigger"/>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Configuring Scheduler for processing OCR Data -->
+	<bean id="ocrDataSchedulerJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="ocrDataScheduler" />
+		<property name="targetMethod" value="processOcrData" />
+	</bean>
+
+	<!-- simple trigger specify repeat interval and delay time -->
+	<bean id="ocrDataSchedulerCronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="ocrDataSchedulerJobDetail" />
+		<property name="cronExpression" value="${cron.expression.ocr.data.scheduler}" />
+	</bean>
+	<!-- ************************** -->
+	<!-- jo to process bulk uploaded files  -->
+	<bean id="processBulkUploadedFilesJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="processBulkUploadedFilesJob" />
+		<property name="targetMethod" value="processZippFiles" />
+	</bean>
+	<!-- simple trigger specify repeat interval and delay time -->
+	<bean id="processBulkUploadedFilesCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean" >
+		<property name="jobDetail" ref="processBulkUploadedFilesJobDetail" />
+		<property name="cronExpression" value="${cron.expression.correspondence.bulk.upload}" />
+	</bean>
+	
+	<!-- Specifing class and method for Correspondence Manual Pair Audit Job 
+		that is going to be called on a specified time basis -->
+	<bean id="manualPairAuditJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="manualPairAuditJob" />
+		<property name="targetMethod" value="processManualAuditFile" />
+	</bean>
+
+	<!-- simple trigger specify repeat interval and delay time for Correspondence 
+		Manual Pair Audit job -->
+	<bean id="manualpairAuditCronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="manualPairAuditJobDetail" />
+		<property name="cronExpression" value="${cron.expression.correspondence.manual.audit}" />
+	</bean>
+	
+	
+	<!-- specific class and method that is going to be called on a specified -->
+	
+	<!-- Configuring Scheduler for Importing Reference Staging Date in Reference Base -->
+	<bean id="importReferenceStagingDataJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="importReferenceStagingDataScheduler" />
+		<property name="targetMethod" value="importReferenceStagingData" />
+	</bean>
+
+	<!-- simple trigger specify repeat interval and delay time -->
+	<bean id="importReferenceStagingDataCronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="importReferenceStagingDataJobDetail" />
+		<property name="cronExpression" value="${cron.expression.import.reference.staging.data.scheduler}" />
+	</bean>
+	<!-- ************************** -->
+	
+	<!-- Configuring Scheduler for Creating FYA Notifications for Pending NPL References -->
+	<bean id="nplReferenceNotificationJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="nplReferenceNotificationScheduler" />
+		<property name="targetMethod" value="createNotifications" />
+	</bean>
+
+	<!-- simple trigger specify repeat interval and delay time -->
+	<bean id="nplReferenceNotificationCronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="nplReferenceNotificationJobDetail" />
+		<property name="cronExpression" value="${cron.expression.npl.reference.notification.scheduler}" />
+	</bean>
+	<!-- ************************** -->
+
+
+	<!-- specifing class and method that is going to be called on a specified 
+		time basis -->
+	<bean id="correspondenceStagingImportJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="correspondenceStagingImportJob" />
+		<property name="targetMethod" value="importStagingData" />
+	</bean>
+
+	<!-- simple trigger specify repeat interval and delay time -->
+	<bean id="correspondenceStagingImportCronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="correspondenceStagingImportJobDetail" />
+		  <property name="cronExpression" value="${cron.expression.uspto.correspondence.staging.import}" />
+	</bean>
+
+	<!-- Update Assignee job configurations -->
+	<bean id="updateAssigneeNotificationTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="updateAssigneeJobDetail" />
+		<property name="cronExpression" value="${cron.expression.mdm.update.assignee}" />
+	</bean>
+	<bean id="updateAssigneeJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="updateAssigneeJob" />
+		<property name="targetMethod" value="executeUpdateAssigneeJob" />
+	</bean>
+	
+	 <!-- Specifing class and method for URGENT IDS Records Report
+		that is going to be called on a specified time basis -->
+	<bean id="urgentIDSReportJobDetails"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="exportUrgentIDSRecordsJob" />
+		<property name="targetMethod" value="generateUrgentIDSRecordReport" />
+	</bean>
+
+	<!-- simple trigger specify repeat interval and delay time for 
+	 URGENT IDS Records Report JOb-->
+	<bean id="urgentIDSReportCronTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="urgentIDSReportJobDetails" />
+		<property name="cronExpression" value="${cron.expression.ids.urgentrecords.report}" />
+	</bean>
+
+	<!-- scheduler factory bean to bind,the executing code and time intervals 
+		together -->
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="correspondenceStagingImportCronTrigger" />
+				<ref bean="manualpairAuditCronTrigger" />
+				<ref bean="processBulkUploadedFilesCronTrigger" />
+				<ref bean = "importReferenceStagingDataCronTrigger" />
+				<ref bean = "nplReferenceNotificationCronTrigger"/>
+				<ref bean = "updateAssigneeNotificationTrigger"/>
+				<ref bean = "urgentIDSReportCronTrigger"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="cronProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:cron-expression.properties</value>
+			</list>
+		</property>
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="order" value="0" />
+	</bean>
+	
+
+</beans>

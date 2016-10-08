@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd"> 
+       
+<tiles-definitions>
+
+	<definition name="login" extends="base.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp"/>
+	</definition>
+	
+	<definition name="admin" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/admin-landing-page.jsp" />
+	</definition>	
+	
+	<definition name="create-new-user" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/create-new-user.jsp" />
+	</definition>
+	
+	<definition name="edit-user" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/edit-user.jsp" />
+	</definition>
+	
+	<definition name="view-user" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/view-user.jsp" />
+	</definition>
+	
+	<definition name="create-role" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/create-role.jsp" />
+	</definition>
+	
+	<definition name="edit-role" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/edit-role.jsp" />
+	</definition>
+	
+	<definition name="view-role" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/view-role.jsp" />
+	</definition>
+	
+	<definition name="create-access-profile" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/create-access-profile.jsp" />
+	</definition>
+	
+	<definition name="edit-access-profile" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/edit-access-profile.jsp" />
+	</definition>
+	
+	<definition name="view-access-profile" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox-Admin"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/view-access-profile.jsp" />
+	</definition>
+	
+	<definition name="list-role" template="/WEB-INF/jsp/list-role.jsp" />
+	<definition name="list-access-profile" template="/WEB-INF/jsp/list-access-profile.jsp" />
+	<definition name="access-profile-view" template="/WEB-INF/jsp/access-profile-view.jsp" />
+	<definition name="user-popup" template="/WEB-INF/jsp/user-popup.jsp" />
+	
+	<!-- User Data Management -->
+	<definition name="deniedpage" template="/WEB-INF/jsp/deniedpage.jsp" />
+	<definition name="list-user" template="/WEB-INF/jsp/list-user.jsp" />
+	<definition name="userAccessControl" template="/WEB-INF/jsp/userAccessControl.jsp"/>
+	
+	<definition name="view-user" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox: View User"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/view-user.jsp" />
+	</definition>
+	
+	<definition name="editUser" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox: View User"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/edit-user.jsp" />
+	</definition>
+	
+	<!-- Notification Management -->
+	<definition name="notificationsDashboard" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox: Notification DashBoard"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/notification/dashBoard.jsp" />
+	</definition>
+	
+	<definition name="notificationSetup" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox: Notification Setup"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/notification/setUpNotification.jsp" />
+	</definition>
+	
+	<definition name="notificationSetUpForUser" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox: Notification BussinessRuleUser "/>
+		<put-attribute name="body" value="/WEB-INF/jsp/notification/addOrRemoveBussinessRuleForUser.jsp" />
+	</definition>
+	
+	<definition name="notificationSetUpForSystem" extends="auth.definition">
+		<put-attribute name="title" value="Blackbox: Notification BussinessRuleSystem"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/notification/addOrRemoveBussinessRuleForSystem.jsp" />
+	</definition>
+	
+	<definition name="forgot" extends="base.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/forgot.jsp" />
+	</definition>
+	
+	<definition name="otp" extends="base.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/otp.jsp" />
+	</definition>
+	
+	<definition name="change-password" extends="base.definition">
+		<put-attribute name="title" value="Blackbox"/>
+		<put-attribute name="body" value="/WEB-INF/jsp/change-password.jsp" />
+	</definition>
+	
+</tiles-definitions>

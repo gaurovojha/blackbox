@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pair:OutgoingCorrespondence xsi:schemaLocation="urn:us:gov:uspto:pair OutgoingCorrespondence.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pair="urn:us:gov:uspto:pair">
+	<pair:FileHeader>
+			<pair:FileCreationTimeStamp>2014-05-28T06:22:11.11</pair:FileCreationTimeStamp>
+	</pair:FileHeader>
+	<pair:CorrespondenceFileHeader>
+		<pair:DocumentCount>5329</pair:DocumentCount>
+		<pair:CorrespondenceTimePeriod>60</pair:CorrespondenceTimePeriod>
+	</pair:CorrespondenceFileHeader>
+	<pair:ApplicationCorrespondence>
+			<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-05-16T02:30:01.1</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>14933258</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-05-05</pair:FilingDate>
+			<pair:AttorneyDocketNumber>MSFT:0135</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Notice to File Missing Parts</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>NTC.MISS.PRT</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-05-15</pair:MailRoomDate>
+					<pair:UploadDate>2014-05-14</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>2</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-05-15</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-05-14T02:23:11.11</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>14933258</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-30</pair:FilingDate>
+			<pair:AttorneyDocketNumber>342027.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Notice to File Missing Parts</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>NTC.MISS.PRT</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2010-05-13</pair:MailRoomDate>
+					<pair:UploadDate>2014-05-12</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>2</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-05-13</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-05-01T02:27:12.12</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>12312312</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-18</pair:FilingDate>
+			<pair:AttorneyDocketNumber>341644.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-04-30</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-29</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-30</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-05-01T02:27:28.28</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>12312312</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-18</pair:FilingDate>
+			<pair:AttorneyDocketNumber>341643.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-04-30</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-29</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-30</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-05-03T02:20:52.52</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>12312312</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-18</pair:FilingDate>
+			<pair:AttorneyDocketNumber>341642.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-05-02</pair:MailRoomDate>
+					<pair:UploadDate>2014-05-01</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-05-02</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-05-06T02:18:51.51</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>12312312</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-16</pair:FilingDate>
+			<pair:AttorneyDocketNumber>341722.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-05-05</pair:MailRoomDate>
+					<pair:UploadDate>2014-05-02</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-05-05</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-04-29T02:22:29.29</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>49849848</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-11</pair:FilingDate>
+			<pair:AttorneyDocketNumber>341640.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-04-28</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-25</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-28</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-05-02T02:23:28.28</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>49849848</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-09</pair:FilingDate>
+			<pair:AttorneyDocketNumber>340912.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-05-01</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-30</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-05-01</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-05-01T02:27:56.56</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>49849848</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-07</pair:FilingDate>
+			<pair:AttorneyDocketNumber>341431.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-04-30</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-29</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-30</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+								<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-04-30</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-29</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-30</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+								<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-05-30</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-29</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-30</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-04-30</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-29</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-30</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-04-30</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-29</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-30</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	<pair:ApplicationCorrespondenceData>
+			<pair:LastModifiedTimestamp>2014-04-18T02:23:43.43</pair:LastModifiedTimestamp>
+			<pair:ApplicationNumber>49849848</pair:ApplicationNumber> 
+			<pair:FilingDate>2014-04-04</pair:FilingDate>
+			<pair:AttorneyDocketNumber>341623.01</pair:AttorneyDocketNumber>
+			<pair:CustomerNumber>136388</pair:CustomerNumber>
+			<pair:DocumentList>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-45-17</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-16</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>3</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-17</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+				<pair:DocumentData>
+					<pair:DocumentCategory>PROSECUTION</pair:DocumentCategory>
+					<pair:DocumentDescription>Filing Receipt</pair:DocumentDescription>
+					<pair:FileWrapperDocumentCode>APP.FILE.REC</pair:FileWrapperDocumentCode>
+					<pair:MailRoomDate>2014-45-17</pair:MailRoomDate>
+					<pair:UploadDate>2014-04-16</pair:UploadDate>
+					<pair:BeginPageNumber>1</pair:BeginPageNumber>
+					<pair:PageQuantity>7</pair:PageQuantity>
+					<pair:PageOffsetQuantity>1</pair:PageOffsetQuantity>
+					<pair:EarliestViewDate>2014-04-17</pair:EarliestViewDate>
+					<pair:EarliestViewBy>Sandip Minhas</pair:EarliestViewBy>
+				</pair:DocumentData>
+		</pair:DocumentList>
+		</pair:ApplicationCorrespondenceData>
+	</pair:ApplicationCorrespondence>	
+	</pair:OutgoingCorrespondence>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd"> 
+       
+<tiles-definitions>
+
+    <definition name="ids.definition" extends="auth.definition">
+        <put-attribute name="navigation" value="/WEB-INF/jsp/IDS/navigation.jsp" />
+    </definition>
+
+    <definition name="idsNotifications" extends="ids.definition">
+        <put-attribute name="body" value="/WEB-INF/jsp/IDS/buildIDS/ids-notification.jsp" />
+        <put-attribute name="activeTab" value="navDashboard"/>
+    </definition>
+    
+     <!-- Navigation for IDS Drill Down -->
+     
+      <definition name="ids.definition.drillDown" extends="auth.definition">
+        <put-attribute name="navigation" value="/WEB-INF/jsp/IDS/navigationDrillDown.jsp" />
+      </definition>
+      
+      
+     <!-- Navigation for Attorney Approval -->
+     
+     <definition name="ids.definitionAttorney" extends="auth.definition">
+        <put-attribute name="navigation" value="/WEB-INF/jsp/IDS/navigationAttorney.jsp" />
+      </definition>
+    
+     <definition name="idsApproval" extends="ids.definitionAttorney">
+        <put-attribute name="body" value="/WEB-INF/jsp/IDS/dashboard/attorney-approval-approveIDS.jsp" />
+        <put-attribute name="activeTab" value="navDashboard"/>
+     </definition>
+    
+     <!-- Initiate IDS -->
+    
+    <definition name="initiate" extends="ids.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/buildIDS/initiateIDS.jsp"/>
+    	<put-attribute name="activeTab" value="navInitiateIDS"/>
+    </definition>
+    
+    <definition name="idsAppInfo" template="/WEB-INF/jsp/IDS/buildIDS/applicationInfo.jsp" />
+    <definition name="usPatent" template="/WEB-INF/jsp/IDS/buildIDS/usPatent.jsp"/>
+    <definition name="usPublication" template="/WEB-INF/jsp/IDS/buildIDS/usPublication.jsp"/>
+    <definition name="foreign" template="/WEB-INF/jsp/IDS/buildIDS/foreignPatent.jsp"/>
+    <definition name="npl" template="/WEB-INF/jsp/IDS/buildIDS/npl.jsp"/>
+    <definition name="confirmationPage" template="/WEB-INF/jsp/IDS/buildIDS/confirmPage.jsp"/>
+    <definition name="usTableRows" template="/WEB-INF/jsp/IDS/buildIDS/uspatentTableRow.jsp"/>
+    <definition name="nplTableRows" template="/WEB-INF/jsp/IDS/buildIDS/nplTableRow.jsp"/>
+    <definition name="foreignTableRows" template="/WEB-INF/jsp/IDS/buildIDS/foreignTableRow.jsp"/>
+    <definition name="previewReference" template="/WEB-INF/jsp/IDS/buildIDS/previewReference.jsp"/>
+    <definition name="certificate" template="/WEB-INF/jsp/IDS/buildIDS/certification-statement.jsp" />
+    
+     <!-- My Dashboard -->
+    
+    <definition name="idsDashboard" extends="ids.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/dashboard/dashboard.jsp"/>
+    	<put-attribute name="activeTab" value="navDashboard"/>
+    </definition>
+    <definition name="initiateIDSAllRecords" template="/WEB-INF/jsp/IDS/dashboard/initiateIDS-all-records.jsp"/>
+    <definition name="initiateIDSUrgentRecords" template="/WEB-INF/jsp/IDS/dashboard/initiateIDS-urgent-records.jsp"/>
+    
+    <definition name="familyExpandedRecords" template="/WEB-INF/jsp/IDS/dashboard/all-family-records.jsp"/>
+    
+    <!-- pending approval tab -->
+    <definition name="pendingApprovalIDS" template="/WEB-INF/jsp/IDS/dashboard/pending-ids-records.jsp"/>
+    <definition name="pendingResponse" template="/WEB-INF/jsp/IDS/dashboard/pending-response-records.jsp"/>
+    
+    <!-- Ready for filing tab -->
+    <definition name="filingReadyRecords" template="/WEB-INF/jsp/IDS/dashboard/filing-ready-records.jsp"/>
+    <definition name="fileIds" extends="ids.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/dashboard/file-ids.jsp"/>
+    </definition>
+    
+    <!-- *************************** WIP USPTO Filing tab*********************************-->
+    <definition name="filingInProgressRecords" template="/WEB-INF/jsp/IDS/dashboard/filing-inProgress-records.jsp"/>
+    <definition name="uploadManualRecords" template="/WEB-INF/jsp/IDS/dashboard/upload-manually-records.jsp"/>
+    <definition name="validateRefStatusRecords" template="/WEB-INF/jsp/IDS/dashboard/validate-ref-status-records.jsp"/>
+    
+    <!-- User Actions -->
+    <definition name="updateRefStatus" extends="ids.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/dashboard/update-ref-status.jsp"/>
+    </definition>
+    <definition name="refUsPublication" template="/WEB-INF/jsp/IDS/dashboard/references-us-publication.jsp" />
+    <definition name="refFp" template="/WEB-INF/jsp/IDS/dashboard/references-fp.jsp" />
+    <definition name="refNpl" template="/WEB-INF/jsp/IDS/dashboard/references-npl.jsp" />
+    
+      <!-- Attorney Approval Dashboard -->
+      
+     <definition name="idsAttorneyApproval" extends="ids.definitionAttorney">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/dashboard/attorney-approval-dashboard.jsp"/>
+    	<put-attribute name="activeTab" value="navDashboard"/>
+     </definition>
+      <definition name="idsAttorneyApprovalRecords" template="/WEB-INF/jsp/IDS/dashboard/attorney-approval-records.jsp"/>
+      <definition name="idsAttorneyApprovalFamilyRecords" template="/WEB-INF/jsp/IDS/dashboard/attorney-approval-family-records.jsp"/>
+    
+      <!--Include all references page  -->
+      <definition name="idsAttorneyApprovalIncludeRef" extends="ids.definitionAttorney">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/dashboard/include-all-references.jsp"/>
+     </definition>
+     <!-- List of references shown to Attorney User -->
+     <definition name="idsReferenceList" template="/WEB-INF/jsp/IDS/dashboard/list-references.jsp"/>
+     
+         <!-- Pending Application Notifications -->
+    <definition name="appNotificationData" template="/WEB-INF/jsp/IDS/buildIDS/notificationCards/appNotificationData.jsp"/>
+    <definition name="familyNotificationData" template="/WEB-INF/jsp/IDS/buildIDS/notificationCards/familyNotificationData.jsp"/>
+     <definition name="idsAttorneyApprovalRecords" template="/WEB-INF/jsp/IDS/dashboard/attorney-approval-records.jsp"/>
+    <!-- Filed @ USPTO => IDS filing packages -->
+    <definition name = "idsFilingPackages" template = "/WEB-INF/jsp/IDS/dashboard/filed-ids-records.jsp"/>
+    <!-- Filed @USPTO => 1449 -->
+    <definition name = "1449PendingIDS" template = "/WEB-INF/jsp/IDS/dashboard/1449-notification-records.jsp"/>
+    <definition name = "referenceReview" extends = "ids.definition">
+    <put-attribute name="body" value = "/WEB-INF/jsp/IDS/dashboard/reference-review.jsp"/>
+    </definition>
+    <definition name = "usPublicationReviewRecords" template = '/WEB-INF/jsp/IDS/dashboard/us-publication-review-records.jsp'></definition>
+    <definition name = "foreignReviewRecords" template = '/WEB-INF/jsp/IDS/dashboard/foreign-review-records.jsp'></definition>
+    <definition name = "nplReviewRecords" template = '/WEB-INF/jsp/IDS/dashboard/npl-review-records.jsp'></definition>
+    <definition name="editReference" extends="ids.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/dashboard/edit-reference.jsp"/>
+    </definition>
+    
+    <!-- IDS Reference Records -->
+    <definition name="ids-reference-results" extends="ids.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/referenceRecords/ids-reference-results.jsp"/>
+    	<put-attribute name="activeTab" value="navDashboard"/>
+    </definition>
+    <definition name="main-record-page" extends="ids.definition">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/referenceRecords/main-record-page.jsp"/>
+    </definition> 
+
+    <definition name="cited-patent-data" template="/WEB-INF/jsp/IDS/referenceRecords/cited/cited-patent-data.jsp"/>
+    <definition name="cited-npl-data" template="/WEB-INF/jsp/IDS/referenceRecords/cited/cited-npl-data.jsp"/>
+    <definition name="uncited-patent-data" template="/WEB-INF/jsp/IDS/referenceRecords/uncited/uncited-patent-data.jsp"/>
+    <definition name="uncited-npl-data" template="/WEB-INF/jsp/IDS/referenceRecords/uncited/uncited-npl-data.jsp"/>
+    <definition name="examiner-cited-patent-data" template="/WEB-INF/jsp/IDS/referenceRecords/examinercited/examiner-cited-patent-data.jsp"/>
+    <definition name="examiner-cited-npl-data" template="/WEB-INF/jsp/IDS/referenceRecords/examinercited/examiner-cited-npl-data.jsp"/>
+    <definition name="cited-in-parent-patent-data" template="/WEB-INF/jsp/IDS/referenceRecords/citedparent/cited-in-parent-patent-data.jsp"/>
+    <definition name="cited-in-parent-npl-data" template="/WEB-INF/jsp/IDS/referenceRecords/citedparent/cited-in-parent-npl-data.jsp"/>
+    <definition name="donotfile-patent-data" template="/WEB-INF/jsp/IDS/referenceRecords/donotfile/donotfile-patent-data.jsp"/>
+    <definition name="donotfile-npl-data" template="/WEB-INF/jsp/IDS/referenceRecords/donotfile/donotfile-npl-data.jsp"/>
+    <definition name="deleted-patent-data" template="/WEB-INF/jsp/IDS/referenceRecords/dropped/deleted-patent-data.jsp"/>
+    <definition name="deleted-npl-data" template="/WEB-INF/jsp/IDS/referenceRecords/dropped/deleted-npl-data.jsp"/>
+    <definition name="cited-header-data" template="/WEB-INF/jsp/IDS/referenceRecords/cited/cited-header-data.jsp"/>
+    <definition name="family-member-data" template="/WEB-INF/jsp/IDS/referenceRecords/family-member-data.jsp"/>
+    <definition name="cited-source-document" template="/WEB-INF/jsp/IDS/referenceRecords/cited/cited-source-document.jsp"/>
+    
+    <!-- IDS Reference Records changes ends-->
+
+    
+    <!-- IDS Drill Down -->
+     <definition name="idsDrillDown" extends="ids.definition.drillDown">
+    	<put-attribute name="body" value="/WEB-INF/jsp/IDS/drillDown/IDSDrillDown.jsp"/>
+    	<put-attribute name="activeTab" value="navIDSDrillDown"/>
+     </definition>
+     
+      <definition name="idsFiledOnRecords" template="/WEB-INF/jsp/IDS/drillDown/filedOnRecords.jsp"/>
+      <definition name="idsCitedReferences" template="/WEB-INF/jsp/IDS/drillDown/citedReferences.jsp"/>
+      <definition name="idsSourceDocument" template="/WEB-INF/jsp/IDS/drillDown/sourceDocument.jsp"/>
+
+</tiles-definitions>

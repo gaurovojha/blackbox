@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+	
+	<mvc:resources location="/" mapping="/**" />
+	<!-- MVC Interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/mdm/editApp/**" />
+			<mvc:exclude-mapping path="/assets/**" />
+			<mvc:exclude-mapping path="/i18n/loadProp/**" />
+			<mvc:exclude-mapping path="/otp/**" />
+    		<mvc:exclude-mapping path="/changePassword" />
+    		<mvc:exclude-mapping path="/login*" />
+			<bean class="com.blackbox.ids.ui.interceptor.ApplicationLockingInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+    		<mvc:mapping path="/**" />
+    		<mvc:exclude-mapping path="/mdm/editApp/**" />
+    		<mvc:exclude-mapping path="/assets/**" />
+    		<mvc:exclude-mapping path="/i18n/loadProp/**" />
+    		<mvc:exclude-mapping path="/otp/**" />
+    		<mvc:exclude-mapping path="/changePassword" />
+    		<mvc:exclude-mapping path="/login*" />
+    		<bean class="com.blackbox.ids.ui.interceptor.ApplicationLockReleaseInterceptor" />
+    	</mvc:interceptor>
+	</mvc:interceptors>
+
+	<import resource="classpath:META-INF/spring/blackbox-services.xml" />
+	<!-- 
+	<import resource="classpath:META-INF/spring/blackbox-scheduler.xml"/>
+
+	<import resource="classpath:META-INF/spring/blackbox-uspto-scrapper.xml" />
+	 -->
+	<import resource="blackbox-security.xml"/>
+
+	<context:component-scan base-package="com.blackbox.ids.ui.validation" />
+	<context:component-scan base-package="com.blackbox.ids.ui.controller" />
+	<context:component-scan base-package="com.blackbox.ids.ui.common" />
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="useCodeAsDefaultMessage" value="true"></property>
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+				<value>i18n/master-data</value>
+				<value>i18n/mdm</value>
+				<value>i18n/correspondence</value>
+				<value>i18n/ids</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Apache Tiles -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+	
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/layout/layout.xml</value>
+				<value>/WEB-INF/jsp/**/views.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+	
+	<bean id="jacksonMessageChanger"  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+    		<property name="supportedMediaTypes" value="application/json" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+    	<property name="messageConverters">
+      	  <util:list id="beanList">
+       	     <ref bean="jacksonMessageChanger" />
+      	  </util:list>
+    	</property>
+	</bean>
+
+</beans>
